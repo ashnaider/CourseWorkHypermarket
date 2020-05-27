@@ -10,6 +10,11 @@
 
 int main()
 {
+     
+    return 0;
+}
+
+/*
     Smartphone sm = Smartphone("Appple", "iPhone 10", 500.90, 10, false, 1, "IOS", {"youtube", "gmail"});
     
     RegularCustomer rc = RegularCustomer(800.50, {"Anton", "Shnaider"}, 1000);
@@ -32,6 +37,5 @@ int main()
          << "\nTotal cost of bought products: " << rc.GetTotalCostOfBoughtProducts() << std::endl;
 
     std::cout << "\nUsual customer:\nMoney: " << c.GetMoney() << std::endl;
-    return 0;
-}
+*/
 
