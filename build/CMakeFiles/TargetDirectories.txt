@@ -1,3 +1,0 @@
-/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/build/CMakeFiles/rebuild_cache.dir
-/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/build/CMakeFiles/main.dir
-/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/build/CMakeFiles/edit_cache.dir
