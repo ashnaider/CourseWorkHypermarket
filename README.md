@@ -6,14 +6,14 @@ First grade course work. OOP.
 ```
 $ git clone https://github.com/ashnaider/CourseWorkHypermarket.git
 ```
-1. ### build 
+2. ### build 
 ```
 $ cd CourseWorkHypermarket
 $ mkdir build && cd build
 $ cmake ..
 $ make all
 ```
-1. ### run 
+3. ### run 
 ```
 $ ./main
 ```
