@@ -14,4 +14,6 @@ $ cmake ..
 $ make all
 ```
 1. ### run 
-```./main```
+```
+$ ./main
+```
