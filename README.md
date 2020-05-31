@@ -6,8 +6,8 @@ First grade course work. OOP.
 `git clone https://github.com/ashnaider/CourseWorkHypermarket.git`
 `cd CourseWorkHypermarket`
 `mkdir build && cd build`
-2. ### build project
+1. ### build project
 `cmake ..`
 `make all`
-3. ### run project
+1. ### run project
 `./main`
