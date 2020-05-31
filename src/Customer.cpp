@@ -4,7 +4,8 @@
 #include <stdexcept>
 #include <algorithm>
 
-Customer::Customer(double new_money) 
+
+Customer::Customer(double new_money)  
     : money(new_money) 
     { 
         if (new_money < 0) {

@@ -2,6 +2,12 @@
 
 .vscode
 
-#ignore emacs files
+# ignore emacs files
 
 *.*#
+
+*.*~
+
+# ignore .o files
+
+*.o

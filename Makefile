@@ -1,3 +1,16 @@
+# some variables
+
+CC=g++
+
+INCLUDE_PATH=include/
+
+SRC_PATH=src/
+
+CFLAGS=-c -Wall -I
+
+BIN_PATH=bin/
+
+
 all: bin/main.o
 	./bin/main.o
 
