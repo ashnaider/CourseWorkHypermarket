@@ -23,20 +23,20 @@ QT_BEGIN_NAMESPACE
 class Ui_CustomerWindow
 {
 public:
+    QPushButton *backToLoginWindowFromCustomerButton;
     QLabel *label;
-    QPushButton *goToMainWindowFromCustomerButton;
 
     void setupUi(QWidget *CustomerWindow)
     {
         if (CustomerWindow->objectName().isEmpty())
             CustomerWindow->setObjectName(QStringLiteral("CustomerWindow"));
-        CustomerWindow->resize(685, 439);
+        CustomerWindow->resize(607, 419);
+        backToLoginWindowFromCustomerButton = new QPushButton(CustomerWindow);
+        backToLoginWindowFromCustomerButton->setObjectName(QStringLiteral("backToLoginWindowFromCustomerButton"));
+        backToLoginWindowFromCustomerButton->setGeometry(QRect(408, 40, 161, 41));
         label = new QLabel(CustomerWindow);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(210, 190, 251, 41));
-        goToMainWindowFromCustomerButton = new QPushButton(CustomerWindow);
-        goToMainWindowFromCustomerButton->setObjectName(QStringLiteral("goToMainWindowFromCustomerButton"));
-        goToMainWindowFromCustomerButton->setGeometry(QRect(470, 30, 171, 41));
+        label->setGeometry(QRect(180, 190, 251, 21));
 
         retranslateUi(CustomerWindow);
 
@@ -46,8 +46,8 @@ public:
     void retranslateUi(QWidget *CustomerWindow)
     {
         CustomerWindow->setWindowTitle(QApplication::translate("CustomerWindow", "Form", Q_NULLPTR));
-        label->setText(QApplication::translate("CustomerWindow", "login successfully. You are customer.", Q_NULLPTR));
-        goToMainWindowFromCustomerButton->setText(QApplication::translate("CustomerWindow", "Back to main window", Q_NULLPTR));
+        backToLoginWindowFromCustomerButton->setText(QApplication::translate("CustomerWindow", "Back ", Q_NULLPTR));
+        label->setText(QApplication::translate("CustomerWindow", "Login successfully. You are customer", Q_NULLPTR));
     } // retranslateUi
 
 };

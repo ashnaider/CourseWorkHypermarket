@@ -19,7 +19,9 @@ public:
     ~RegisterForm();
 
 private slots:
-    void on_backToLoginButton_clicked();
+    void on_finishRegistrationButton_clicked();
+
+    void on_BackToLoginButton_clicked();
 
 private:
     Ui::RegisterForm *ui;

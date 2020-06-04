@@ -12,3 +12,9 @@ CustomerWindow::~CustomerWindow()
 {
     delete ui;
 }
+
+void CustomerWindow::on_backToLoginWindowFromCustomerButton_clicked()
+{
+    this->close();
+    emit goBackToMainWindow();
+}

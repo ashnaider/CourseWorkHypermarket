@@ -4,8 +4,8 @@
 #include <QWidget>
 
 #include "registerform.h"
+#include "customerwindow.h"
 
-// customerwindow.h
 
 namespace Ui {
 class LoginWindow;
@@ -32,6 +32,8 @@ private slots:
 private:
     Ui::LoginWindow *ui;
     RegisterForm *registerForm;
+
+    CustomerWindow *customerWindow;
 };
 
 #endif // CUSTOMERWINDOW_H

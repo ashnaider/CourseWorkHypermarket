@@ -24,21 +24,18 @@ QT_BEGIN_NAMESPACE
 class Ui_RegisterForm
 {
 public:
-    QPushButton *backToLoginButton;
     QLabel *label;
     QLabel *label_2;
     QLineEdit *registerLogin;
     QLineEdit *registerPassword;
     QPushButton *finishRegistrationButton;
+    QPushButton *BackToLoginButton;
 
     void setupUi(QWidget *RegisterForm)
     {
         if (RegisterForm->objectName().isEmpty())
             RegisterForm->setObjectName(QStringLiteral("RegisterForm"));
         RegisterForm->resize(628, 424);
-        backToLoginButton = new QPushButton(RegisterForm);
-        backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
-        backToLoginButton->setGeometry(QRect(448, 30, 141, 41));
         label = new QLabel(RegisterForm);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(190, 160, 67, 17));
@@ -54,6 +51,9 @@ public:
         finishRegistrationButton = new QPushButton(RegisterForm);
         finishRegistrationButton->setObjectName(QStringLiteral("finishRegistrationButton"));
         finishRegistrationButton->setGeometry(QRect(220, 280, 141, 41));
+        BackToLoginButton = new QPushButton(RegisterForm);
+        BackToLoginButton->setObjectName(QStringLiteral("BackToLoginButton"));
+        BackToLoginButton->setGeometry(QRect(468, 30, 121, 41));
 
         retranslateUi(RegisterForm);
 
@@ -63,10 +63,10 @@ public:
     void retranslateUi(QWidget *RegisterForm)
     {
         RegisterForm->setWindowTitle(QApplication::translate("RegisterForm", "Form", Q_NULLPTR));
-        backToLoginButton->setText(QApplication::translate("RegisterForm", "back", Q_NULLPTR));
         label->setText(QApplication::translate("RegisterForm", "Login:", Q_NULLPTR));
         label_2->setText(QApplication::translate("RegisterForm", "Password:", Q_NULLPTR));
         finishRegistrationButton->setText(QApplication::translate("RegisterForm", "Done", Q_NULLPTR));
+        BackToLoginButton->setText(QApplication::translate("RegisterForm", "Back", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -1,4 +1,5 @@
 #include "loginwindow.h"
+#include "mainwindow.h"
 #include "ui_loginwindow.h"
 
 #include <string>
@@ -19,6 +20,10 @@ LoginWindow::LoginWindow(QWidget *parent) :
     registerForm = new RegisterForm();
 
     connect(registerForm, &RegisterForm::goBackToLoginForm, this, &RegisterForm::show);
+
+    customerWindow =  new CustomerWindow();
+
+    connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &MainWindow::show);
 }
 
 LoginWindow::~LoginWindow()
@@ -76,7 +81,10 @@ void LoginWindow::on_confirmLoginButton_clicked()
         QMessageBox::warning(this, "Authorization info", "Wrong name or password!");
     } else {
         QMessageBox::information(this, "Authorization info", "Correct!");
-
+        // go to customer window
+        customerWindow->show();
+        this->close();
     }
+
 }
 

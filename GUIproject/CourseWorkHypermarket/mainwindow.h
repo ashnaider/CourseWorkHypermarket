@@ -5,6 +5,7 @@
 
 #include "loginwindow.h"
 #include "ownerwindow.h"
+#include "customerwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +28,7 @@ private:
     Ui::MainWindow *ui;
     OwnerWindow *ownerWindow;
     LoginWindow *loginWindow;
+    //CustomerWindow *customerWindow;
 };
 
 #endif // MAINWINDOW_H

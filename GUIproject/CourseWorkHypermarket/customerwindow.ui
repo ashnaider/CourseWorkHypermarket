@@ -6,37 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>685</width>
-    <height>439</height>
+    <width>607</width>
+    <height>419</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QPushButton" name="backToLoginWindowFromCustomerButton">
+   <property name="geometry">
+    <rect>
+     <x>408</x>
+     <y>40</y>
+     <width>161</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back </string>
+   </property>
+  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>180</x>
      <y>190</y>
      <width>251</width>
-     <height>41</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>login successfully. You are customer.</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="goToMainWindowFromCustomerButton">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>30</y>
-     <width>171</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Back to main window</string>
+    <string>Login successfully. You are customer</string>
    </property>
   </widget>
  </widget>
