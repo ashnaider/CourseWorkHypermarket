@@ -1,10 +1,10 @@
+#include "Utilities.h"
+
 #include <vector>
 #include <iostream>
 #include <algorithm>
 #include <string>
 #include <stdexcept>
-
-#include "Utilities.h"
 
 
 std::string GetUsersInput(const std::vector<std::string>& expected_inputs,
@@ -24,4 +24,5 @@ std::string GetUsersInput(const std::vector<std::string>& expected_inputs,
             std::cout << wrong_argument_message << std::endl;
         }
     }
+    return tmp;
 }
