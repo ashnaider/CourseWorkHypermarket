@@ -27,7 +27,7 @@
      <string>Owner</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="CustomerBtn">
+   <widget class="QPushButton" name="LoginBtn">
     <property name="geometry">
      <rect>
       <x>350</x>

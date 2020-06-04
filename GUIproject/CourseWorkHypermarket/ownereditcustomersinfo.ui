@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Go Back to Owner</string>
+    <string>Back</string>
    </property>
   </widget>
  </widget>

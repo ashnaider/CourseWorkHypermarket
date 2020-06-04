@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-#include "customerwindow.h"
+#include "loginwindow.h"
 #include "ownerwindow.h"
 
 namespace Ui {
@@ -21,12 +21,12 @@ public:
 private slots:
     void on_OwnerBtn_clicked();
 
-    void on_CustomerBtn_clicked();
+    void on_LoginBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
     OwnerWindow *ownerWindow;
-    CustomerWindow *customerWindow;
+    LoginWindow *loginWindow;
 };
 
 #endif // MAINWINDOW_H

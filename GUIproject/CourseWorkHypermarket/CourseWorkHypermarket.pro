@@ -27,20 +27,23 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     ownerwindow.cpp \
-    customerwindow.cpp \
     ownereditproduts.cpp \
-    ownereditcustomersinfo.cpp
+    ownereditcustomersinfo.cpp \
+    registerform.cpp \
+    loginwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     ownerwindow.h \
-    customerwindow.h \
     ownereditproduts.h \
-    ownereditcustomersinfo.h
+    ownereditcustomersinfo.h \
+    registerform.h \
+    loginwindow.h
 
 FORMS += \
         mainwindow.ui \
     ownerwindow.ui \
-    customerwindow.ui \
     ownereditproduts.ui \
-    ownereditcustomersinfo.ui
+    ownereditcustomersinfo.ui \
+    registerform.ui \
+    loginwindow.ui

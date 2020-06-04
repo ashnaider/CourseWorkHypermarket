@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // подключаем к слоту запуска главного окна по кнопке во втором окне
     connect(ownerWindow, &OwnerWindow::toMainWindowFromOwner, this, &MainWindow::show);
 
-    customerWindow = new CustomerWindow();
+    loginWindow = new LoginWindow();
 
-    connect(customerWindow, &CustomerWindow::toMainWindowFromCustomer, this, &MainWindow::show);
+    connect(loginWindow, &LoginWindow::toMainWindowFromLogin, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -27,8 +27,8 @@ void MainWindow::on_OwnerBtn_clicked()
     this->close();
 }
 
-void MainWindow::on_CustomerBtn_clicked()
+void MainWindow::on_LoginBtn_clicked()
 {
-    customerWindow->show();
+    loginWindow->show();
     this->close();
 }

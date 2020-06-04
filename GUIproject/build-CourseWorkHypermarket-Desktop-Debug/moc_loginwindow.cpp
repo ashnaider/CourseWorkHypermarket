@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'customerwindow.h'
+** Meta object code from reading C++ file 'loginwindow.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../CourseWorkHypermarket/customerwindow.h"
+#include "../CourseWorkHypermarket/loginwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'customerwindow.h' doesn't include <QObject>."
+#error "The header file 'loginwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -20,33 +20,33 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_CustomerWindow_t {
+struct qt_meta_stringdata_LoginWindow_t {
     QByteArrayData data[6];
-    char stringdata0[145];
+    char stringdata0[136];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_CustomerWindow_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_LoginWindow_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_CustomerWindow_t qt_meta_stringdata_CustomerWindow = {
+static const qt_meta_stringdata_LoginWindow_t qt_meta_stringdata_LoginWindow = {
     {
-QT_MOC_LITERAL(0, 0, 14), // "CustomerWindow"
-QT_MOC_LITERAL(1, 15, 24), // "toMainWindowFromCustomer"
-QT_MOC_LITERAL(2, 40, 0), // ""
-QT_MOC_LITERAL(3, 41, 42), // "on_BackToMainWindowFromCustom..."
-QT_MOC_LITERAL(4, 84, 30), // "on_goToResgisterButton_clicked"
-QT_MOC_LITERAL(5, 115, 29) // "on_confirmLoginButton_clicked"
+QT_MOC_LITERAL(0, 0, 11), // "LoginWindow"
+QT_MOC_LITERAL(1, 12, 21), // "toMainWindowFromLogin"
+QT_MOC_LITERAL(2, 34, 0), // ""
+QT_MOC_LITERAL(3, 35, 39), // "on_BackToMainWindowFromLoginB..."
+QT_MOC_LITERAL(4, 75, 30), // "on_goToResgisterButton_clicked"
+QT_MOC_LITERAL(5, 106, 29) // "on_confirmLoginButton_clicked"
 
     },
-    "CustomerWindow\0toMainWindowFromCustomer\0"
-    "\0on_BackToMainWindowFromCustomerBtn_clicked\0"
+    "LoginWindow\0toMainWindowFromLogin\0\0"
+    "on_BackToMainWindowFromLoginBtn_clicked\0"
     "on_goToResgisterButton_clicked\0"
     "on_confirmLoginButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_CustomerWindow[] = {
+static const uint qt_meta_data_LoginWindow[] = {
 
  // content:
        7,       // revision
@@ -78,14 +78,14 @@ static const uint qt_meta_data_CustomerWindow[] = {
        0        // eod
 };
 
-void CustomerWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void LoginWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        CustomerWindow *_t = static_cast<CustomerWindow *>(_o);
+        LoginWindow *_t = static_cast<LoginWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->toMainWindowFromCustomer(); break;
-        case 1: _t->on_BackToMainWindowFromCustomerBtn_clicked(); break;
+        case 0: _t->toMainWindowFromLogin(); break;
+        case 1: _t->on_BackToMainWindowFromLoginBtn_clicked(); break;
         case 2: _t->on_goToResgisterButton_clicked(); break;
         case 3: _t->on_confirmLoginButton_clicked(); break;
         default: ;
@@ -93,8 +93,8 @@ void CustomerWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            typedef void (CustomerWindow::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CustomerWindow::toMainWindowFromCustomer)) {
+            typedef void (LoginWindow::*_t)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LoginWindow::toMainWindowFromLogin)) {
                 *result = 0;
                 return;
             }
@@ -103,26 +103,26 @@ void CustomerWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     Q_UNUSED(_a);
 }
 
-const QMetaObject CustomerWindow::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_CustomerWindow.data,
-      qt_meta_data_CustomerWindow,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject LoginWindow::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_LoginWindow.data,
+      qt_meta_data_LoginWindow,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *CustomerWindow::metaObject() const
+const QMetaObject *LoginWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *CustomerWindow::qt_metacast(const char *_clname)
+void *LoginWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CustomerWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_LoginWindow.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int CustomerWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int LoginWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -140,7 +140,7 @@ int CustomerWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CustomerWindow::toMainWindowFromCustomer()
+void LoginWindow::toMainWindowFromLogin()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }

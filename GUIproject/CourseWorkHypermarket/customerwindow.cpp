@@ -12,10 +12,3 @@ CustomerWindow::~CustomerWindow()
 {
     delete ui;
 }
-
-void CustomerWindow::on_BackToMainWindowFromCustomerBtn_clicked()
-{
-    this->close();
-    emit toMainWindowFromCustomer();
-}
-

@@ -47,7 +47,7 @@ public:
     {
         OwnerEditCustomersInfo->setWindowTitle(QApplication::translate("OwnerEditCustomersInfo", "Form", Q_NULLPTR));
         label->setText(QApplication::translate("OwnerEditCustomersInfo", "You are editing customers info", Q_NULLPTR));
-        goBackToOwnerButton->setText(QApplication::translate("OwnerEditCustomersInfo", "Go Back to Owner", Q_NULLPTR));
+        goBackToOwnerButton->setText(QApplication::translate("OwnerEditCustomersInfo", "Back", Q_NULLPTR));
     } // retranslateUi
 
 };

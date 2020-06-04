@@ -28,7 +28,7 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QPushButton *OwnerBtn;
-    QPushButton *CustomerBtn;
+    QPushButton *LoginBtn;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -43,9 +43,9 @@ public:
         OwnerBtn = new QPushButton(centralWidget);
         OwnerBtn->setObjectName(QStringLiteral("OwnerBtn"));
         OwnerBtn->setGeometry(QRect(150, 130, 141, 61));
-        CustomerBtn = new QPushButton(centralWidget);
-        CustomerBtn->setObjectName(QStringLiteral("CustomerBtn"));
-        CustomerBtn->setGeometry(QRect(350, 130, 141, 61));
+        LoginBtn = new QPushButton(centralWidget);
+        LoginBtn->setObjectName(QStringLiteral("LoginBtn"));
+        LoginBtn->setGeometry(QRect(350, 130, 141, 61));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -67,7 +67,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         OwnerBtn->setText(QApplication::translate("MainWindow", "Owner", Q_NULLPTR));
-        CustomerBtn->setText(QApplication::translate("MainWindow", "Customer", Q_NULLPTR));
+        LoginBtn->setText(QApplication::translate("MainWindow", "Customer", Q_NULLPTR));
     } // retranslateUi
 
 };
