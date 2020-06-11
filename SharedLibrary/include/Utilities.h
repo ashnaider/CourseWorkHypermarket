@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-enum Status {
+enum UserStatus {
     OWNER,
     CUSTOMER,
     QUIT

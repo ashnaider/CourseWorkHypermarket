@@ -80,10 +80,11 @@ void LoginWindow::on_confirmLoginButton_clicked()
     if (!correct) {
         QMessageBox::warning(this, "Authorization info", "Wrong name or password!");
     } else {
-        QMessageBox::information(this, "Authorization info", "Correct!");
+
         // go to customer window
         customerWindow->show();
         this->close();
+        QMessageBox::information(this, "Authorization info", "Login successfully!");
     }
 
 }

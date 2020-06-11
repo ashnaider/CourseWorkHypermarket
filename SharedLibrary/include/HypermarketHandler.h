@@ -9,6 +9,6 @@ class HypermarketHandler {
 public:
     void Start();
 
-    Status OwnerOrCustomer() const;
+    UserStatus OwnerOrCustomer() const;
 
 };

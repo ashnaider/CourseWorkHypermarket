@@ -25,18 +25,26 @@ class Ui_CustomerWindow
 public:
     QPushButton *backToLoginWindowFromCustomerButton;
     QLabel *label;
+    QLabel *label_2;
+    QLabel *moneyLabel;
 
     void setupUi(QWidget *CustomerWindow)
     {
         if (CustomerWindow->objectName().isEmpty())
             CustomerWindow->setObjectName(QStringLiteral("CustomerWindow"));
-        CustomerWindow->resize(607, 419);
+        CustomerWindow->resize(690, 495);
         backToLoginWindowFromCustomerButton = new QPushButton(CustomerWindow);
         backToLoginWindowFromCustomerButton->setObjectName(QStringLiteral("backToLoginWindowFromCustomerButton"));
-        backToLoginWindowFromCustomerButton->setGeometry(QRect(408, 40, 161, 41));
+        backToLoginWindowFromCustomerButton->setGeometry(QRect(500, 30, 161, 41));
         label = new QLabel(CustomerWindow);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(180, 190, 251, 21));
+        label->setGeometry(QRect(220, 230, 251, 21));
+        label_2 = new QLabel(CustomerWindow);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(50, 40, 101, 17));
+        moneyLabel = new QLabel(CustomerWindow);
+        moneyLabel->setObjectName(QStringLiteral("moneyLabel"));
+        moneyLabel->setGeometry(QRect(150, 40, 67, 17));
 
         retranslateUi(CustomerWindow);
 
@@ -48,6 +56,8 @@ public:
         CustomerWindow->setWindowTitle(QApplication::translate("CustomerWindow", "Form", Q_NULLPTR));
         backToLoginWindowFromCustomerButton->setText(QApplication::translate("CustomerWindow", "Back ", Q_NULLPTR));
         label->setText(QApplication::translate("CustomerWindow", "Login successfully. You are customer", Q_NULLPTR));
+        label_2->setText(QApplication::translate("CustomerWindow", "Your money: ", Q_NULLPTR));
+        moneyLabel->setText(QApplication::translate("CustomerWindow", "$0", Q_NULLPTR));
     } // retranslateUi
 
 };

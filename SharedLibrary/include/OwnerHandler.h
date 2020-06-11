@@ -1,6 +1,9 @@
 #pragma once
 
+#include <string>
+
 class OwnerHandler {
  public:
-  void Start() const;
+  std::string Start() const;
+
 };

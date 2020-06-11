@@ -1,6 +1,8 @@
 #ifndef CUSTOMERWINDOW_H
 #define CUSTOMERWINDOW_H
 
+#include "customer.h"
+
 #include <QWidget>
 
 namespace Ui {
@@ -23,6 +25,7 @@ private slots:
 
 private:
     Ui::CustomerWindow *ui;
+    Customer *customer;
 };
 
 #endif // CUSTOMERWINDOW_H

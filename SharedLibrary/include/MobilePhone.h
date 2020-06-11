@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include "Product.h"
 
@@ -17,9 +18,13 @@ public:
         double new_max_discount,
         
         bool new_contract,
-        int new_max_sim_cards );
+        int new_max_sim_cards,
+	int new_quantity );
+
+    std::vector<std::string> getInfo() const;
 
 protected:
     bool contract;  
     int max_sim_cards;
+    int quantity;
 };

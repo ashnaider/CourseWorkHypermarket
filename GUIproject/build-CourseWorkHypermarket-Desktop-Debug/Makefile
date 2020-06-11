@@ -57,7 +57,9 @@ SOURCES       = ../CourseWorkHypermarket/main.cpp \
 		../CourseWorkHypermarket/ownereditcustomersinfo.cpp \
 		../CourseWorkHypermarket/registerform.cpp \
 		../CourseWorkHypermarket/loginwindow.cpp \
-		../CourseWorkHypermarket/customerwindow.cpp moc_mainwindow.cpp \
+		../CourseWorkHypermarket/customerwindow.cpp \
+		../CourseWorkHypermarket/customer.cpp \
+		../CourseWorkHypermarket/product.cpp moc_mainwindow.cpp \
 		moc_ownerwindow.cpp \
 		moc_ownereditproduts.cpp \
 		moc_ownereditcustomersinfo.cpp \
@@ -72,6 +74,8 @@ OBJECTS       = main.o \
 		registerform.o \
 		loginwindow.o \
 		customerwindow.o \
+		customer.o \
+		product.o \
 		moc_mainwindow.o \
 		moc_ownerwindow.o \
 		moc_ownereditproduts.o \
@@ -159,14 +163,18 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../CourseWorkHypermarket/ownereditcustomersinfo.h \
 		../CourseWorkHypermarket/registerform.h \
 		../CourseWorkHypermarket/loginwindow.h \
-		../CourseWorkHypermarket/customerwindow.h ../CourseWorkHypermarket/main.cpp \
+		../CourseWorkHypermarket/customerwindow.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h ../CourseWorkHypermarket/main.cpp \
 		../CourseWorkHypermarket/mainwindow.cpp \
 		../CourseWorkHypermarket/ownerwindow.cpp \
 		../CourseWorkHypermarket/ownereditproduts.cpp \
 		../CourseWorkHypermarket/ownereditcustomersinfo.cpp \
 		../CourseWorkHypermarket/registerform.cpp \
 		../CourseWorkHypermarket/loginwindow.cpp \
-		../CourseWorkHypermarket/customerwindow.cpp
+		../CourseWorkHypermarket/customerwindow.cpp \
+		../CourseWorkHypermarket/customer.cpp \
+		../CourseWorkHypermarket/product.cpp
 QMAKE_TARGET  = CourseWorkHypermarket
 DESTDIR       = 
 TARGET        = CourseWorkHypermarket
@@ -350,8 +358,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../CourseWorkHypermarket/mainwindow.h ../CourseWorkHypermarket/ownerwindow.h ../CourseWorkHypermarket/ownereditproduts.h ../CourseWorkHypermarket/ownereditcustomersinfo.h ../CourseWorkHypermarket/registerform.h ../CourseWorkHypermarket/loginwindow.h ../CourseWorkHypermarket/customerwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../CourseWorkHypermarket/main.cpp ../CourseWorkHypermarket/mainwindow.cpp ../CourseWorkHypermarket/ownerwindow.cpp ../CourseWorkHypermarket/ownereditproduts.cpp ../CourseWorkHypermarket/ownereditcustomersinfo.cpp ../CourseWorkHypermarket/registerform.cpp ../CourseWorkHypermarket/loginwindow.cpp ../CourseWorkHypermarket/customerwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../CourseWorkHypermarket/mainwindow.h ../CourseWorkHypermarket/ownerwindow.h ../CourseWorkHypermarket/ownereditproduts.h ../CourseWorkHypermarket/ownereditcustomersinfo.h ../CourseWorkHypermarket/registerform.h ../CourseWorkHypermarket/loginwindow.h ../CourseWorkHypermarket/customerwindow.h ../CourseWorkHypermarket/customer.h ../CourseWorkHypermarket/product.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../CourseWorkHypermarket/main.cpp ../CourseWorkHypermarket/mainwindow.cpp ../CourseWorkHypermarket/ownerwindow.cpp ../CourseWorkHypermarket/ownereditproduts.cpp ../CourseWorkHypermarket/ownereditcustomersinfo.cpp ../CourseWorkHypermarket/registerform.cpp ../CourseWorkHypermarket/loginwindow.cpp ../CourseWorkHypermarket/customerwindow.cpp ../CourseWorkHypermarket/customer.cpp ../CourseWorkHypermarket/product.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../CourseWorkHypermarket/mainwindow.ui ../CourseWorkHypermarket/ownerwindow.ui ../CourseWorkHypermarket/ownereditproduts.ui ../CourseWorkHypermarket/ownereditcustomersinfo.ui ../CourseWorkHypermarket/registerform.ui ../CourseWorkHypermarket/loginwindow.ui ../CourseWorkHypermarket/customerwindow.ui $(DISTDIR)/
 
 
@@ -525,6 +533,13 @@ loginwindow.o: ../CourseWorkHypermarket/loginwindow.cpp ../CourseWorkHypermarket
 customerwindow.o: ../CourseWorkHypermarket/customerwindow.cpp ../CourseWorkHypermarket/customerwindow.h \
 		ui_customerwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customerwindow.o ../CourseWorkHypermarket/customerwindow.cpp
+
+customer.o: ../CourseWorkHypermarket/customer.cpp ../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customer.o ../CourseWorkHypermarket/customer.cpp
+
+product.o: ../CourseWorkHypermarket/product.cpp ../CourseWorkHypermarket/product.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o product.o ../CourseWorkHypermarket/product.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

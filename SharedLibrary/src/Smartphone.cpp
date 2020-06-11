@@ -18,11 +18,12 @@ Smartphone::Smartphone(
         
         bool new_contract,
         int new_max_sim_cards,
+	int new_quantity,
         
-        std::string new_operating_system,
-        std::vector<std::string> new_list_of_preinstalled_programms )
+        const std::string& new_operating_system,
+        const std::vector<std::string>& new_list_of_preinstalled_programms )
 
-        : MobilePhone(new_firm, new_name, new_price, new_max_discount, new_contract, new_max_sim_cards)
+        : MobilePhone(new_firm, new_name, new_price, new_max_discount, new_contract, new_max_sim_cards, new_quantity)
         , operating_system(new_operating_system)
         , list_of_preinstalled_programms(new_list_of_preinstalled_programms)
 

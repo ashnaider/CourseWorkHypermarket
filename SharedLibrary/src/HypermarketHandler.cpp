@@ -1,28 +1,35 @@
 #include "HypermarketHandler.h"
 #include "Utilities.h"
 
+#include "OwnerHandler.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 void HypermarketHandler::Start() {
-    Status status = OwnerOrCustomer();
+  while (true) {
+    UserStatus status = OwnerOrCustomer();
     if (status == OWNER) {
         std::cout << "You are OWNER" << std::endl;
+	OwnerHandler oh;
+	oh.Start();
     }
     else if (status == CUSTOMER) {
         std::cout << "You are CUSTOMER" << std::endl;
     }
     else if (status == QUIT) {
-        std::cout << "You are quit" << std::endl;
+        std::cout << "Thank you, bye!" << std::endl;
+	return ;
     }
+  }
 }
 
-Status HypermarketHandler::OwnerOrCustomer() const {
+UserStatus HypermarketHandler::OwnerOrCustomer() const {
     std::vector<std::string> expected_inputs = {"1", "0"};
     std::string users_input = GetUsersInput(expected_inputs, 
     "Would you like to enter as owner(1) or customer(0)? (q to quit)",
-    "Please input only 1 (owner) and 0 (customer)", "q");
+    "Please input only 1 (owner) or 0 (customer)", "q");
 
     if (users_input == "1") {
         return OWNER;

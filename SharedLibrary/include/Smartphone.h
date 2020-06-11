@@ -20,13 +20,12 @@ public:
         
         bool new_contract,
         int new_max_sim_cards,
+	int new_quantity, 
         
-        std::string new_operating_system,
-        std::vector<std::string> new_list_of_preinstalled_programms );
+        const std::string& new_operating_system,
+        const std::vector<std::string>& new_list_of_preinstalled_programms );
 
-    void PrintInfo() const {
-        
-    }
+    void PrintInfo() const;
 
 private:
     std::string operating_system;
