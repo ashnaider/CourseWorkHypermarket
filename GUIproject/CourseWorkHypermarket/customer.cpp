@@ -52,33 +52,77 @@ bool Customer::BuyProduct(const Product& product) {
 }
 
 
-std::vector<std::string> Customer::GetUsersInfo() {
-    QFile readCustomerInfo("../.CourseWork/money.txt");
+std::vector<std::string> Customer::findCustomerInfo(std::string name) {
+    QFile customersMoney("/home/anton/CourseWorkDb/money.txt");
 
-    if (!readCustomerInfo.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        return {};
+    if (!customersMoney.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            //QMessageBox::warning(this, "Error!", "Can not open file!");
+            return {};
     }
 
-    QTextStream mystream(&readCustomerInfo);
-    QString allInfo = mystream.readAll();
+    QTextStream instream(&customersMoney);
+    QString line = instream.readAll();
+    std::string all = line.toStdString();
 
-    std::string strAll = allInfo.toStdString();
+    customersMoney.close();
 
-    readCustomerInfo.close();
+    std::stringstream ss(all);
 
-    std::stringstream file_ss(strAll);
+    std::vector<std::string> resultInfo;
+    std::string nextLine, nextWord;
+    bool customerFound = false;
 
-    std::vector<std::string> users_info;
+    // find our customer line by name
+    while (std::getline(ss, nextLine)) {
+        std::stringstream ssnextLine(nextLine);
+        while (std::getline(ssnextLine, nextWord, ';')) {
+            if (customerFound) {
+                resultInfo.push_back(nextWord);
+            }
 
-    std::string temp_line;
-    while (std::getline(file_ss, temp_line)) {
-        std::stringstream temp_ss(temp_line);
-        std::string temp_word;
+            if (nextWord == name) {
+                customerFound = true;
+                resultInfo.push_back(nextWord);
+            }
 
-        while (temp_ss>> temp_word) {
-            users_info.push_back(temp_word);
+        }
+        if (customerFound) {
+            break;
         }
     }
 
-    return users_info;
+    return resultInfo;
 }
+
+
+//std::vector<std::string> Customer::GetUsersInfo() {
+//    QFile readCustomerInfo("../.CourseWork/money.txt");
+
+//    if (!readCustomerInfo.open(QIODevice::ReadOnly | QIODevice::Text)) {
+//        return {};
+//    }
+
+//    QTextStream mystream(&readCustomerInfo);
+//    QString allInfo = mystream.readAll();
+
+//    std::string strAll = allInfo.toStdString();
+
+//    readCustomerInfo.close();
+
+//    std::stringstream file_ss(strAll);
+
+//    std::vector<std::string> users_info;
+
+//    std::string temp_line;
+//    while (std::getline(file_ss, temp_line)) {
+//        std::stringstream temp_ss(temp_line);
+//        std::string temp_word;
+
+//        while (temp_ss>> temp_word) {
+//            users_info.push_back(temp_word);
+//        }
+//    }
+
+//    return users_info;
+//}
+

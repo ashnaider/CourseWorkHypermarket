@@ -18,6 +18,8 @@ public:
 
     double GetMoney() const;
 
+    std::vector<std::string> findCustomerInfo(std::string name);
+
 protected:
 
     std::vector<std::string> GetUsersInfo();

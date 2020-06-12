@@ -29,9 +29,10 @@ void RegisterForm::on_finishRegistrationButton_clicked()
     std::string strNewName = newName.toStdString();
     std::string strNewPass = newPass.toStdString();
 
-    QFile usersPasswords("../.CourseWorkDb/passwords.txt");
+    QFile usersPasswords("/home/anton/CourseWorkDb/passwords.txt");
 
     if (!usersPasswords.open(QIODevice::ReadWrite | QIODevice::Text)) {
+                    QMessageBox::warning(this, "Error!", "Can not open file!");
             return;
     }
 

@@ -1,6 +1,7 @@
 #include "loginwindow.h"
 #include "mainwindow.h"
 #include "ui_loginwindow.h"
+#include "customer.h"
 
 #include <string>
 #include <iostream>
@@ -19,11 +20,13 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
     registerForm = new RegisterForm();
 
-    connect(registerForm, &RegisterForm::goBackToLoginForm, this, &RegisterForm::show);
+    connect(registerForm, &RegisterForm::goBackToLoginForm, this, &LoginWindow::show);
 
-    customerWindow =  new CustomerWindow();
+//    customerWindow =  new CustomerWindow();
 
-    connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &MainWindow::show);
+//    connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &MainWindow::show);
+
+    customer = new Customer;
 }
 
 LoginWindow::~LoginWindow()
@@ -34,13 +37,19 @@ LoginWindow::~LoginWindow()
 void LoginWindow::on_BackToMainWindowFromLoginBtn_clicked()
 {
     this->close();
+    clearInputFields();
     emit toMainWindowFromLogin();
 }
 
+void LoginWindow::clearInputFields() {
+    ui->loginNameInput->setText("");
+    ui->loginPasswordInput->setText("");
+}
 
 void LoginWindow::on_goToResgisterButton_clicked()
 {
     registerForm->show();
+    clearInputFields();
     this->close();
 }
 
@@ -54,9 +63,10 @@ void LoginWindow::on_confirmLoginButton_clicked()
 
     bool correct = false;
 
-    QFile usersPasswords("../.CourseWorkDb/passwords.txt");
+    QFile usersPasswords("/home/anton/CourseWorkDb/passwords.txt");
 
     if (!usersPasswords.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QMessageBox::warning(this, "Error!", "Can not open file!");
             return;
     }
 
@@ -80,12 +90,39 @@ void LoginWindow::on_confirmLoginButton_clicked()
     if (!correct) {
         QMessageBox::warning(this, "Authorization info", "Wrong name or password!");
     } else {
-
+        if (!isCustomerRegular(usersName)) {
         // go to customer window
+        customerWindow =  new CustomerWindow(usersName);
+
+        connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &LoginWindow::show);
+
         customerWindow->show();
+        } else {
+            regularCustomerWindow = new RegularCustomerWindow(usersName);
+
+            connect(regularCustomerWindow, &RegularCustomerWindow::goBackToLoginWindow, this, &LoginWindow::show);
+
+            regularCustomerWindow->show();
+        }
+        clearInputFields();
         this->close();
         QMessageBox::information(this, "Authorization info", "Login successfully!");
     }
 
 }
 
+
+bool LoginWindow::isCustomerRegular(std::string customerName) {
+    std::vector<std::string> customerInfo = customer->findCustomerInfo(customerName);
+
+    bool result;
+    if (customerInfo[1] == "regular") {
+        result = true;
+    } else {
+        result = false;
+    }
+
+    // QMessageBox::information(this, "info", "you are " + QString::fromStdString(customerInfo[1]) + " customer");
+
+    return result;
+}

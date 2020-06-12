@@ -3,8 +3,11 @@
 
 #include <QWidget>
 
+// #include "customer.h"
+
 #include "registerform.h"
 #include "customerwindow.h"
+#include "regularcustomerwindow.h"
 
 
 namespace Ui {
@@ -18,6 +21,8 @@ class LoginWindow : public QWidget
 public:
     explicit LoginWindow(QWidget *parent = 0);
     ~LoginWindow();
+
+    void clearInputFields();
 
 signals:
     void toMainWindowFromLogin();
@@ -33,7 +38,13 @@ private:
     Ui::LoginWindow *ui;
     RegisterForm *registerForm;
 
+    Customer* customer;
+
     CustomerWindow *customerWindow;
+
+    RegularCustomerWindow *regularCustomerWindow;
+
+    bool isCustomerRegular(std::string customerName);
 };
 
 #endif // CUSTOMERWINDOW_H

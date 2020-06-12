@@ -33,7 +33,9 @@ SOURCES += \
     loginwindow.cpp \
     customerwindow.cpp \
     customer.cpp \
-    product.cpp
+    product.cpp \
+    regularcustomer.cpp \
+    regularcustomerwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +46,9 @@ HEADERS += \
     loginwindow.h \
     customerwindow.h \
     customer.h \
-    product.h
+    product.h \
+    regularcustomer.h \
+    regularcustomerwindow.h
 
 FORMS += \
         mainwindow.ui \
@@ -53,4 +57,5 @@ FORMS += \
     ownereditcustomersinfo.ui \
     registerform.ui \
     loginwindow.ui \
-    customerwindow.ui
+    customerwindow.ui \
+    regularcustomerwindow.ui

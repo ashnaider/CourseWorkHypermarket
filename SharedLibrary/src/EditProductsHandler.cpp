@@ -5,44 +5,71 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
-string EditProductsHandler::editMobilePhones() {
-  ifstream ifs("../MobilePhones.txt");
+EditProductsHandler::EditProductsHandler() {
+  // read info from products.txt to map
+  // to get available types of products
 
-  
-  
-  ifs.close();
-  
-}
+  ifstream ifs("../Db/products.txt");
+  string type, path;
 
-string EditProductsHandler::editProduct(int product) {
-  string product_name;
-  switch(product) {
-  case 1: product_name = "Mobile phone"; break;
-  case 2: product_name = "Smartphone"; break;
-  case 3: product_name = "Laptop"; break;
-  default: product_name = "Undefined"; 
+  while (ifs >> type >> path) {
+    pathToDb[type] = path;
+    productList.push_back(type);
   }
- 
-  cout << "You are editing product number " << product << endl;
-  return "";
+  ifs.close();
 }
 
-void EditProductsHandler::showProducts() const {
+void EditProductsHandler::showProductInfo(string productName) const {
+  string pathToProductInfo = pathToDb.at(productName);
+
+  // read info from file
+  ifstream ifs(pathToProductInfo);
+
+  string header;
+  getline(ifs, header);
+  stringstream ssheader(header);
+  string column;
+  
+  // printing header
+  while (ssheader >> column) {
+    cout << column << "\t";
+  }
+  string nextLine;
+  while (getline(ifs, nextLine)) {
+    
+  }
+  
+}
+
+string EditProductsHandler::editProduct(int productNumber ) {
+ 
+  cout << "You are editing product " << productList[productNumber - 1] << endl;
+
+  string output;
+  
+  return output;
+}
+
+void EditProductsHandler::showProductList() const {
   cout << "=======================================" << endl;
   cout << "\tAvailable types of products" << endl;
-  cout << "1 - Mobile phone" << endl;
-  cout << "2 - Smartphone" << endl;
-  cout << "3 - Laptop" << endl;
+
+  int counter = 0;
+  for (const auto& product : productList) {
+    cout << ++counter << " - " << product << endl;
+  }
+  
   cout << "=======================================" << endl;
 }
 
 
 string EditProductsHandler::Start() {
   
-  showProducts();
+  showProductList();
   
   vector<string> expected_inputs = {"1", "2", "3"};
 

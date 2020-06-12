@@ -5,16 +5,20 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 class EditProductsHandler {
  public:
-  std::string Start() ;
+  EditProductsHandler();
+  std::string Start();
   
-  void showProducts() const;
+  void showProductList() const;
 
-  std::string editProduct(int Products);
+  std::string editProduct(int productNumber);
 
-  std::string editMobilePhones();
-  std::string editSmartphone();
-  std::string editLaptop();
+  void showProductInfo(std::string productName) const;
+
+ private:
+  std::map<std::string, std::string> pathToDb;
+  std::vector<std::string> productList;
 };
