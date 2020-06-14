@@ -4,6 +4,8 @@
 #include "customer.h"
 #include "regularcustomer.h"
 
+#include "utilities.h"
+
 #include <QWidget>
 #include <QLabel>
 
@@ -31,7 +33,7 @@ private slots:
 private:
     Ui::CustomerWindow *ui;
     Customer *customer;
-
+    Utilities *utilities;
 
     bool isCustomerRegularBool;
 
@@ -42,6 +44,10 @@ private:
     void setMoneyOnScreen(double money);
 
     void setRegularCustomerInfo();
+
+    void setProductsComboBox();
+
+    std::vector<std::string> getProductList();
 
 };
 

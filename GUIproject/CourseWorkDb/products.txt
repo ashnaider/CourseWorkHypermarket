@@ -1,0 +1,3 @@
+MobilePhone;..~/CourseWorkDb/MobilePhones.txt;
+Smartphone;..~/CourseWorkDb/Smartphones.txt;
+Laptop;..~/CourseWorkDb/Laptops.txt;

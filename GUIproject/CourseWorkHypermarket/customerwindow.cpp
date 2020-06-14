@@ -29,6 +29,10 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
 
     setMoneyOnScreen(customer->GetMoney());
 
+    setProductsComboBox();
+
+    utilities = new Utilities();
+
 }
 
 CustomerWindow::~CustomerWindow()
@@ -68,5 +72,25 @@ void CustomerWindow::setRegularCustomerInfo() {
     ui->regulaCustomerGreetingLabel->setText("Hello, " + QString::fromStdString(customerFirstName) + "!" );
     ui->regulatCustomerTotalCostLabel->setText("Total cost of bought products: "
                                                + QString::number(customer->GetTotalCostOfBoughtProducts() ));
+}
 
+
+std::vector<std::string> CustomerWindow::getProductList() {
+    std::string fileName = "/home/anton/CourseWorkDb/products.txt";
+    std::vector<std::vector<std::string>> allFile = utilities->readFileByWord(fileName);
+
+    std::vector<std::string> productList;
+    for (const auto& line : allFile) {
+        productList.push_back(line[0]);
+    }
+
+    return productList;
+}
+
+void CustomerWindow::setProductsComboBox() {
+    std::vector<std::string> productList = getProductList();
+
+    for (const auto& product : productList) {
+        ui->productListComboBox->addItem(QString::fromStdString(product));
+    }
 }
