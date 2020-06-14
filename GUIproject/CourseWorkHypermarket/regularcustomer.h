@@ -14,15 +14,19 @@ public:
     RegularCustomer(double new_money, const std::vector<std::string>& new_full_name,
                     double new_total_cost_of_bought_products);
 
+    RegularCustomer(std::string customerName);
+
     virtual double GetPersonalDiscount() const;
 
     virtual bool BuyProduct(const Product& product);
 
     void IncreaseTotalCostOfBoughtProducts(double cost);
 
-    double GetTotalCostOfBoughtProducts() const;
+    std::string GetStrName() const;
 
-    std::string GetName() const;
+    virtual std::string GetFirstName() const;
+
+    virtual double GetTotalCostOfBoughtProducts() const;
 
 private:
     std::vector<std::string> full_name;

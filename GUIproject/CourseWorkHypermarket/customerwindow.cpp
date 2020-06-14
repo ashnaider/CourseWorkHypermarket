@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QLabel>
 
 #include <vector>
 #include <string>
@@ -17,12 +18,18 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //createCustomer();
+    isCustomerRegularBool = isCustomerRegular(customerName);
 
-    // QMessageBox::information(this, "Ok", "Customer name " + QString::fromStdString(customerName));
+    if (isCustomerRegularBool) {
+        customer = new RegularCustomer(customerName);
+        setRegularCustomerInfo();
+    } else {
+        customer = new Customer(customerName);
+    }
 
-    setMoneyOnScreen(234.5);
-};
+    setMoneyOnScreen(customer->GetMoney());
+
+}
 
 CustomerWindow::~CustomerWindow()
 {
@@ -40,3 +47,26 @@ void CustomerWindow::setMoneyOnScreen(double money) {
      ui->moneyLabel->setText( QString::number( money ) );
 }
 
+
+bool CustomerWindow::isCustomerRegular(std::string customerName) {
+    std::vector<std::string> customerInfo = customer->findCustomerInfo(customerName);
+
+    bool result;
+    if (customerInfo[1] == "regular") {
+        result = true;
+    } else {
+        result = false;
+    }
+
+    // QMessageBox::information(this, "info", "you are " + QString::fromStdString(customerInfo[1]) + " customer");
+
+    return result;
+}
+
+void CustomerWindow::setRegularCustomerInfo() {
+    std::string customerFirstName = customer->GetFirstName();
+    ui->regulaCustomerGreetingLabel->setText("Hello, " + QString::fromStdString(customerFirstName) + "!" );
+    ui->regulatCustomerTotalCostLabel->setText("Total cost of bought products: "
+                                               + QString::number(customer->GetTotalCostOfBoughtProducts() ));
+
+}

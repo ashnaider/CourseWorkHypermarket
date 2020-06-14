@@ -1,7 +1,6 @@
 #include "loginwindow.h"
 #include "mainwindow.h"
 #include "ui_loginwindow.h"
-#include "customer.h"
 
 #include <string>
 #include <iostream>
@@ -26,7 +25,6 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
 //    connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &MainWindow::show);
 
-    customer = new Customer;
 }
 
 LoginWindow::~LoginWindow()
@@ -90,20 +88,14 @@ void LoginWindow::on_confirmLoginButton_clicked()
     if (!correct) {
         QMessageBox::warning(this, "Authorization info", "Wrong name or password!");
     } else {
-        if (!isCustomerRegular(usersName)) {
+
         // go to customer window
         customerWindow =  new CustomerWindow(usersName);
 
         connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &LoginWindow::show);
 
         customerWindow->show();
-        } else {
-            regularCustomerWindow = new RegularCustomerWindow(usersName);
 
-            connect(regularCustomerWindow, &RegularCustomerWindow::goBackToLoginWindow, this, &LoginWindow::show);
-
-            regularCustomerWindow->show();
-        }
         clearInputFields();
         this->close();
         QMessageBox::information(this, "Authorization info", "Login successfully!");
@@ -111,18 +103,3 @@ void LoginWindow::on_confirmLoginButton_clicked()
 
 }
 
-
-bool LoginWindow::isCustomerRegular(std::string customerName) {
-    std::vector<std::string> customerInfo = customer->findCustomerInfo(customerName);
-
-    bool result;
-    if (customerInfo[1] == "regular") {
-        result = true;
-    } else {
-        result = false;
-    }
-
-    // QMessageBox::information(this, "info", "you are " + QString::fromStdString(customerInfo[1]) + " customer");
-
-    return result;
-}

@@ -9,12 +9,16 @@
 class Customer
 {
 public:
-    Customer();
+    Customer(std::string customerName);
     Customer(double new_money);
 
     virtual double GetPersonalDiscount() const;
 
     virtual bool BuyProduct(const Product& product);
+
+    virtual std::string GetFirstName() const { return { }; }
+
+    virtual double GetTotalCostOfBoughtProducts() const { return 0; }
 
     double GetMoney() const;
 

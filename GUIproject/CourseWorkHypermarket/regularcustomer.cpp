@@ -20,6 +20,25 @@ RegularCustomer::RegularCustomer(
         }
 }
 
+RegularCustomer::RegularCustomer(std::string customerName)
+    : Customer(customerName)
+{
+    std::vector<std::string> customerInfo = findCustomerInfo(customerName);
+
+    std::string strFullName = customerInfo[4];
+    std::stringstream ssFullName(strFullName);
+
+    std::vector<std::string> fullNameVec;
+    std::string word;
+    while (ssFullName >> word) {
+        fullNameVec.push_back(word);
+    }
+
+    this->full_name = fullNameVec;
+
+    this->total_cost_of_bought_products = std::stoi(customerInfo[3]);
+}
+
 double RegularCustomer::GetPersonalDiscount() const {
     double discount = total_cost_of_bought_products / 1000;
     return (discount <= 15) ? discount : 15;
@@ -39,11 +58,8 @@ bool RegularCustomer::BuyProduct(const Product& product) {
     return false;
 }
 
-double RegularCustomer::GetTotalCostOfBoughtProducts() const {
-    return total_cost_of_bought_products;
-}
 
-std::string RegularCustomer::GetName() const {
+std::string RegularCustomer::GetStrName() const {
     std::stringstream ss;
     for (const std::string& name : full_name) {
         ss << name + " ";
@@ -51,4 +67,12 @@ std::string RegularCustomer::GetName() const {
     std::string str_name = ss.str();
     str_name.pop_back();
     return str_name;
+}
+
+std::string RegularCustomer::GetFirstName() const {
+    return full_name[0];
+}
+
+double RegularCustomer::GetTotalCostOfBoughtProducts() const {
+    return total_cost_of_bought_products;
 }

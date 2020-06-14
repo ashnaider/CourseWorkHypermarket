@@ -1,5 +1,5 @@
-user1;usual;230;701;
-user2;usual;1300;20000;
+user1;usual;230;
+user2;usual;1300;
 user3;regular;9000;32090;Ivan Ivanovich Ivanov;
 user4;regular;234;5432;Sergey Sergeev;
 user5;usual;300;

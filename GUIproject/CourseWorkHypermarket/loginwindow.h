@@ -7,7 +7,6 @@
 
 #include "registerform.h"
 #include "customerwindow.h"
-#include "regularcustomerwindow.h"
 
 
 namespace Ui {
@@ -38,11 +37,7 @@ private:
     Ui::LoginWindow *ui;
     RegisterForm *registerForm;
 
-    Customer* customer;
-
     CustomerWindow *customerWindow;
-
-    RegularCustomerWindow *regularCustomerWindow;
 
     bool isCustomerRegular(std::string customerName);
 };

@@ -15,9 +15,11 @@
 #include <QTextStream>
 #include <QDebug>
 
-Customer::Customer()
+Customer::Customer(std::string customerName)
 {
+    std::vector<std::string> customerInfo = findCustomerInfo(customerName);
 
+    this->money = std::stoi(customerInfo[2]);
 }
 
 Customer::Customer(double new_money)
@@ -34,11 +36,7 @@ double Customer::GetPersonalDiscount() const {
 }
 
 double Customer::GetMoney() const {
-    // TO DO:
-    // read info from file and get info
-
-
-    return 333;//money;
+    return money;
 }
 
 bool Customer::BuyProduct(const Product& product) {
@@ -93,6 +91,8 @@ std::vector<std::string> Customer::findCustomerInfo(std::string name) {
 
     return resultInfo;
 }
+
+
 
 
 //std::vector<std::string> Customer::GetUsersInfo() {
