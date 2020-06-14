@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QWidget::setWindowTitle("Welcome to Hypermarket!");
+
     ownerWindow = new OwnerWindow();
     // подключаем к слоту запуска главного окна по кнопке во втором окне
     connect(ownerWindow, &OwnerWindow::toMainWindowFromOwner, this, &MainWindow::show);

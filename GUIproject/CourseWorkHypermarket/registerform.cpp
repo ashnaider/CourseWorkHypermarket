@@ -14,6 +14,8 @@ RegisterForm::RegisterForm(QWidget *parent) :
     ui(new Ui::RegisterForm)
 {
     ui->setupUi(this);
+
+    QWidget::setWindowTitle("Registration");
 }
 
 RegisterForm::~RegisterForm()

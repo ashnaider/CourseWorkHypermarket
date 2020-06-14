@@ -18,6 +18,8 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QWidget::setWindowTitle("Customer");
+
     isCustomerRegularBool = isCustomerRegular(customerName);
 
     if (isCustomerRegularBool) {
@@ -76,7 +78,7 @@ void CustomerWindow::setRegularCustomerInfo() {
 
 
 std::vector<std::string> CustomerWindow::getProductList() {
-    std::string fileName = "/home/anton/CourseWorkDb/products.txt";
+    QString fileName = "/home/anton/CourseWorkDb/products.txt";
     std::vector<std::vector<std::string>> allFile = utilities->readFileByWord(fileName);
 
     std::vector<std::string> productList;
@@ -93,4 +95,33 @@ void CustomerWindow::setProductsComboBox() {
     for (const auto& product : productList) {
         ui->productListComboBox->addItem(QString::fromStdString(product));
     }
+}
+
+
+void CustomerWindow::addProductsOnScreen(QString productName) {
+    // add products to screen
+    QString fullPath = "/home/anton/CourseWorkDb/" + productName + ".txt";
+    std::vector<std::vector<std::string>> products = utilities->readFileByWord(fullPath);
+
+    products.erase(products.begin());
+
+    QString imgPath = "/home/anton/CourseWorkDb/img/";
+    QString ext = ".txt";
+    std::string strProductName;
+
+    for (const auto& product : products) {
+        strProductName = product[product.size() - 1];
+        utilities->replaceSymbol(strProductName, ' ', '_');
+        QString totalPath = imgPath + QString::fromStdString(strProductName) + ext;
+        ui->productsListWidget->addItem( QString::fromStdString(product[1]) + "\t\t"
+                                        + QString::fromStdString(product[2]));
+    }
+}
+
+void CustomerWindow::on_findProductsButton_clicked()
+{
+    QString productName = ui->productListComboBox->currentText();
+    // QMessageBox::information(this, "Your choise", "You selected " + productName);
+
+    addProductsOnScreen(productName);
 }

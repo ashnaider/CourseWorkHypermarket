@@ -30,6 +30,8 @@ signals:
 private slots:
     void on_backToLoginWindowFromCustomerButton_clicked();
 
+    void on_findProductsButton_clicked();
+
 private:
     Ui::CustomerWindow *ui;
     Customer *customer;
@@ -46,6 +48,8 @@ private:
     void setRegularCustomerInfo();
 
     void setProductsComboBox();
+
+    void addProductsOnScreen(QString productName);
 
     std::vector<std::string> getProductList();
 

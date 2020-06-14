@@ -17,6 +17,8 @@ LoginWindow::LoginWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QWidget::setWindowTitle("Login");
+
     registerForm = new RegisterForm();
 
     connect(registerForm, &RegisterForm::goBackToLoginForm, this, &LoginWindow::show);
@@ -98,7 +100,7 @@ void LoginWindow::on_confirmLoginButton_clicked()
 
         clearInputFields();
         this->close();
-        QMessageBox::information(this, "Authorization info", "Login successfully!");
+        QMessageBox::information(this, "Authorization info", "Login successfully! You are customer");
     }
 
 }

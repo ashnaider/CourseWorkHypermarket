@@ -6,6 +6,8 @@ OwnerEditCustomersInfo::OwnerEditCustomersInfo(QWidget *parent) :
     ui(new Ui::OwnerEditCustomersInfo)
 {
     ui->setupUi(this);
+
+    QWidget::setWindowTitle("Edit customer's info");
 }
 
 OwnerEditCustomersInfo::~OwnerEditCustomersInfo()

@@ -6,6 +6,8 @@ OwnerEditProduts::OwnerEditProduts(QWidget *parent) :
     ui(new Ui::OwnerEditProduts)
 {
     ui->setupUi(this);
+
+    QWidget::setWindowTitle("Edit products");
 }
 
 OwnerEditProduts::~OwnerEditProduts()

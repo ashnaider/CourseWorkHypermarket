@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>765</width>
-    <height>568</height>
+    <width>696</width>
+    <height>637</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,19 +24,6 @@
    </property>
    <property name="text">
     <string>Back </string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>140</y>
-     <width>251</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Login successfully. You are customer</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -94,11 +81,34 @@
   <widget class="QComboBox" name="productListComboBox">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>150</y>
+     <x>40</x>
+     <y>120</y>
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="productsListWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>170</y>
+     <width>591</width>
+     <height>431</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="findProductsButton">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>120</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>find</string>
    </property>
   </widget>
  </widget>

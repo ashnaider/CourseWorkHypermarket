@@ -15,7 +15,13 @@ class Utilities
 public:
     Utilities();
 
-    std::vector<std::vector<std::string>> readFileByWord(std::string fileName) const;
+    std::vector<std::vector<std::string>> readFileByWord(QString fileName) const;
+
+    std::vector<std::string> readFileByLine(QString fileName) const;
+
+    std::string readFileInString(QString fileName) const;
+
+    void replaceSymbol(std::string& str, char what, char forWhat) const;
 };
 
 #endif // UTILITIES_H

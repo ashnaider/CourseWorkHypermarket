@@ -7,6 +7,8 @@ OwnerWindow::OwnerWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QWidget::setWindowTitle("Owner");
+
     ownerEditProduts = new OwnerEditProduts();
 
     connect(ownerEditProduts, &OwnerEditProduts::goBackToOwnerButton, this, &OwnerWindow::show);
