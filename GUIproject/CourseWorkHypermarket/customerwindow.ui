@@ -88,16 +88,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QListWidget" name="productsListWidget">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>170</y>
-     <width>591</width>
-     <height>431</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="findProductsButton">
    <property name="geometry">
     <rect>
@@ -109,6 +99,29 @@
    </property>
    <property name="text">
     <string>find</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buyProductPushButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>584</y>
+     <width>89</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Buy</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="productTableWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>180</y>
+     <width>611</width>
+     <height>381</height>
+    </rect>
    </property>
   </widget>
  </widget>

@@ -6,6 +6,9 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QLabel>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QStringList>
 
 #include <vector>
 #include <string>
@@ -34,7 +37,6 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
     setProductsComboBox();
 
     utilities = new Utilities();
-
 }
 
 CustomerWindow::~CustomerWindow()
@@ -69,14 +71,19 @@ bool CustomerWindow::isCustomerRegular(std::string customerName) {
     return result;
 }
 
-void CustomerWindow::setRegularCustomerInfo() {
-    std::string customerFirstName = customer->GetFirstName();
-    ui->regulaCustomerGreetingLabel->setText("Hello, " + QString::fromStdString(customerFirstName) + "!" );
+void CustomerWindow::setTotalCostOfBoughtProducts() {
     ui->regulatCustomerTotalCostLabel->setText("Total cost of bought products: "
                                                + QString::number(customer->GetTotalCostOfBoughtProducts() ));
 }
 
+void CustomerWindow::setRegularCustomerInfo() {
+    std::string customerFirstName = customer->GetFirstName();
+    ui->regulaCustomerGreetingLabel->setText("Hello, " + QString::fromStdString(customerFirstName) + "!" );
+    setTotalCostOfBoughtProducts();
+}
 
+
+/* combo box functions */
 std::vector<std::string> CustomerWindow::getProductList() {
     QString fileName = "/home/anton/CourseWorkDb/products.txt";
     std::vector<std::vector<std::string>> allFile = utilities->readFileByWord(fileName);
@@ -96,14 +103,78 @@ void CustomerWindow::setProductsComboBox() {
         ui->productListComboBox->addItem(QString::fromStdString(product));
     }
 }
+/* ---------------------------------------- */
 
 
-void CustomerWindow::addProductsOnScreen(QString productName) {
+
+void CustomerWindow::addProductsOnScreen(QString productName)
+{
+    if (productList) {
+        delete productList;
+        productList = nullptr;
+    }
+    productList = new ProductList(productName);
+
+    int rows = productList->ptrVecProductList.size();
+    int cols = productList->GetFieldsQuantity();
+
+    ui->productTableWidget->setRowCount(rows);
+    ui->productTableWidget->setColumnCount(cols);
+    ui->productTableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    QHeaderView *header = ui->productTableWidget->horizontalHeader();
+    header->setSectionResizeMode(QHeaderView::ResizeToContents);
+
+    ui->productTableWidget->setHorizontalHeaderLabels(productList->GetProductInfoHeader());
+
+    for (int row = 0; row < rows; ++row) {
+        std::vector<std::string> pInfo = productList->GetProductInfoInVec(row);
+        for (int col = 0; col < cols; ++col) {
+           QString sItem = QString::fromStdString(pInfo[col]);
+           QTableWidgetItem *item = new QTableWidgetItem(sItem);
+           item->setFlags(item->flags() & ~Qt::ItemIsEditable); // non editable cells
+           ui->productTableWidget->setItem(row, col, item);
+        }
+    }
+}
+
+void CustomerWindow::on_findProductsButton_clicked()
+{
+    QString productName = ui->productListComboBox->currentText();
+
+    addProductsOnScreen(productName);
+}
+
+void CustomerWindow::on_buyProductPushButton_clicked()
+{
+//    int selectedProductIndex = ui->productListComboBox->currentIndex();
+
+//    if (customer->BuyProduct({currentProductList[0], currentProductList[1],
+//                              currentProductList[2], currentProductList[3]}) ) {
+//        setMoneyOnScreen(customer->GetMoney());
+//        setTotalCostOfBoughtProducts();
+
+//    } else {
+//        QMessageBox::warning(this, "Oops", "You havn't got enought money!");
+//    }
+
+}
+
+
+
+
+
+/*
     // add products to screen
     QString fullPath = "/home/anton/CourseWorkDb/" + productName + ".txt";
     std::vector<std::vector<std::string>> products = utilities->readFileByWord(fullPath);
 
-    products.erase(products.begin());
+    currentProductList = products;
+
+    // fill productsPriceMap
+    for (const auto& product : currentProductList) {
+        productsPriceMap[product[1]] = std::stod(product[2]);
+    }
 
     QString imgPath = "/home/anton/CourseWorkDb/img/";
     QString ext = ".txt";
@@ -113,15 +184,16 @@ void CustomerWindow::addProductsOnScreen(QString productName) {
         strProductName = product[product.size() - 1];
         utilities->replaceSymbol(strProductName, ' ', '_');
         QString totalPath = imgPath + QString::fromStdString(strProductName) + ext;
-        ui->productsListWidget->addItem( QString::fromStdString(product[1]) + "\t\t"
-                                        + QString::fromStdString(product[2]));
+
+        // set data for table widget
+
+        QTableWidgetItem *newItem = new QTableWidgetItem("my custom item!");
+        int rows = 5;
+        int cols = 5;
+
+        ui->productListTableWidget->setRowCount(rows);
+        ui->productListTableWidget->setColumnCount(cols);
+
+        ui->productListTableWidget->setItem(3, 3, newItem);
     }
-}
-
-void CustomerWindow::on_findProductsButton_clicked()
-{
-    QString productName = ui->productListComboBox->currentText();
-    // QMessageBox::information(this, "Your choise", "You selected " + productName);
-
-    addProductsOnScreen(productName);
-}
+*/

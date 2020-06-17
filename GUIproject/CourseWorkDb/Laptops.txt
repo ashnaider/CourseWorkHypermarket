@@ -1,0 +1,3 @@
+Firm;Name;Price;MaxDiscount;DiagonalSize;Weight;CPUCores;MainMemory;
+Apple;Apple MacBook Pro 16;58000;10;16;1.76;16;16;
+Xiaomi;Xiaomi Mi Notebook Pro 15.6;15.6;24000;8;1.94;8;8;

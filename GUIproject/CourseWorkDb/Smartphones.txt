@@ -1,0 +1,3 @@
+Firm;Name;Price;MaxDiscount;Contract;MaxSIMCards;OS;ListOfPreinstalledProgramms;
+Samsung;Samsung Galaxy S10;17999;8;true;2;Android;SasmsungHealth GalaxyStore;
+Apple;Apple iPhone 10;25000;4;false;2;IOS;iTunes iCloud iBooks;

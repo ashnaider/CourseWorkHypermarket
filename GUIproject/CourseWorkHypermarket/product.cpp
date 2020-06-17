@@ -1,6 +1,7 @@
 #include "product.h"
 
 #include <string>
+#include <vector>
 #include <iostream>
 #include <stdexcept>
 
@@ -9,14 +10,14 @@
 */
 
 Product::Product(
-    const std::string& new_firm,
-    const std::string& new_name,
-    double new_price,
-    double new_max_discount )
-    : firm(new_firm)
-    , name(new_name)
-    , price(new_price)
-    , max_discount(new_max_discount)
+    const std::string& firm,
+    const std::string& name,
+    double price,
+    double max_discount )
+    : firm(firm)
+    , name(name)
+    , price(price)
+    , max_discount(max_discount)
     {
       if (price < 0 || max_discount < 0) {
         throw std::invalid_argument("Error in Product constructor! Price can't be negative!");
@@ -39,6 +40,49 @@ double Product::GetMaxDiscount() const {
   return max_discount;
 }
 
+std::string Product::GetFirm() const {
+    return firm;
+}
+
+std::string Product::GetName() const {
+    return name;
+}
+
+bool Product::GetIsContract() const {
+    return false;
+}
+
+int Product::GetMaxSimCards() const {
+    return 0;
+}
+
+std::string Product::GetOS() const {
+    return "";
+}
+
+std::vector<std::string> Product::GetPreinstalledProgramms() const {
+    return {};
+}
+
+double Product::GetDiagonalSize() const {
+    return 0;
+}
+
+double Product::GetWeight() const {
+    return 0;
+}
+
+int Product::GetCpuCores() const {
+    return 0;
+}
+
+int Product::GetMainMemory() const {
+    return 0;
+}
+
+std::string Product::GetPreinstalledProgrammsInStr() const {
+    return "";
+}
 Product::~Product() {
-        std::cout << "Product destructed." << std::endl;
-    }
+
+}

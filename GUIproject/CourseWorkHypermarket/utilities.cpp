@@ -5,7 +5,7 @@ Utilities::Utilities()
 
 }
 
-std::vector<std::vector<std::string>> Utilities::readFileByWord(QString fileName) const {
+std::vector<std::vector<std::string>> Utilities::readFileByWord(QString fileName, bool withHeader/* =false*/) {
     QFile usersFile(fileName);
 
     if (!usersFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -32,6 +32,10 @@ std::vector<std::vector<std::string>> Utilities::readFileByWord(QString fileName
         }
         result.push_back(tempVec);
         tempVec.clear();
+    }
+
+    if (!withHeader) {
+        result.erase(result.begin());
     }
 
     return result;
@@ -87,4 +91,8 @@ void Utilities::replaceSymbol(std::string &str, char what, char forWhat) const {
             ch = forWhat;
         }
     }
+}
+
+QString Utilities::generateFilePathForProduct(QString productClass) {
+    return "/home/anton/CourseWorkDb/" + productClass + ".txt";
 }
