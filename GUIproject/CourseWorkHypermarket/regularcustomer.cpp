@@ -48,6 +48,10 @@ void RegularCustomer::IncreaseTotalCostOfBoughtProducts(double cost) {
     total_cost_of_bought_products += cost;
 }
 
+double RegularCustomer::GetFinalProductPrice(const Product *product) {
+    double total_cost = product->GetPrice() - GetPersonalDiscount();
+}
+
 bool RegularCustomer::BuyProduct(const Product& product) {
     double total_cost = product.GetPrice() - GetPersonalDiscount();
     if (money >= total_cost) {
@@ -58,6 +62,15 @@ bool RegularCustomer::BuyProduct(const Product& product) {
     return false;
 }
 
+bool RegularCustomer::BuyProduct(const Product *product) {
+    double total_cost = GetFinalProductPrice(product);
+    if (money >= total_cost) {
+        money -= total_cost;
+        IncreaseTotalCostOfBoughtProducts(total_cost);
+        return true;
+    }
+    return false;
+}
 
 std::string RegularCustomer::GetStrName() const {
     std::stringstream ss;

@@ -32,7 +32,7 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
         customer = new Customer(customerName);
     }
 
-    setMoneyOnScreen(customer->GetMoney());
+    setMoneyOnScreen();
 
     setProductsComboBox();
 
@@ -51,8 +51,8 @@ void CustomerWindow::on_backToLoginWindowFromCustomerButton_clicked()
 }
 
 
-void CustomerWindow::setMoneyOnScreen(double money) {
-     ui->moneyLabel->setText( QString::number( money ) );
+void CustomerWindow::setMoneyOnScreen() {
+     ui->moneyLabel->setText( QString::number( customer->GetMoney() ) );
 }
 
 
@@ -145,19 +145,43 @@ void CustomerWindow::on_findProductsButton_clicked()
     addProductsOnScreen(productName);
 }
 
+void CustomerWindow::updateUserInfoOnScreen() {
+    setMoneyOnScreen();
+    if (isCustomerRegularBool) {
+        setTotalCostOfBoughtProducts();
+    }
+}
+
 void CustomerWindow::on_buyProductPushButton_clicked()
 {
-//    int selectedProductIndex = ui->productListComboBox->currentIndex();
 
-//    if (customer->BuyProduct({currentProductList[0], currentProductList[1],
-//                              currentProductList[2], currentProductList[3]}) ) {
-//        setMoneyOnScreen(customer->GetMoney());
-//        setTotalCostOfBoughtProducts();
+    std::vector<int> selectedRows;
+    QModelIndexList selection = ui->productTableWidget->selectionModel()->selectedRows();
+    for (int i = 0; i < selection.count(); ++i) {
+        QModelIndex index = selection.at(i);
+        selectedRows.push_back(index.row());
+    }
 
-//    } else {
-//        QMessageBox::warning(this, "Oops", "You havn't got enought money!");
-//    }
+    double total_cost = 0;
+    for (const auto row : selectedRows) {
+        total_cost += customer->GetFinalProductPrice(productList->ptrVecProductList[row]);
+    }
 
+    QMessageBox::StandardButton buy;
+    buy = QMessageBox::question(this, "Accept", "Do you agree with the purchase?\nTotal cost with your personal discount: "
+                                 + QString::number(total_cost),
+                                 QMessageBox::Yes|QMessageBox::No);
+
+    if (buy == QMessageBox::Yes) {
+         for (const auto row : selectedRows) {
+            if (customer->BuyProduct(productList->ptrVecProductList[row]) ) {
+                updateUserInfoOnScreen();
+
+            } else {
+                QMessageBox::warning(this, "Oops", "You havn't got enought money!");
+            }
+         }
+    }
 }
 
 

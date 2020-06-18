@@ -14,7 +14,10 @@ public:
 
     virtual double GetPersonalDiscount() const;
 
+    virtual double GetFinalProductPrice(const Product* product);
+
     virtual bool BuyProduct(const Product& product);
+    virtual bool BuyProduct(const Product* product);
 
     virtual std::string GetFirstName() const { return { }; }
 

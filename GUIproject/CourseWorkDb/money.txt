@@ -1,5 +1,7 @@
-user1;usual;230;
-user2;usual;1300;
+Login;Status;Money;Bought;Name;
+user1;usual;230;;;
+user2;usual;1300;;;
 user3;regular;9000;32090;Ivan Ivanovich Ivanov;
 user4;regular;234;5432;Sergey Sergeev;
-user5;usual;300;
+user5;usual;300;;;
+user6;usual;10000;;;

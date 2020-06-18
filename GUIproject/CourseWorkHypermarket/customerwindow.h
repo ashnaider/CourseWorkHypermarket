@@ -56,7 +56,7 @@ private:
 
     bool isCustomerRegular(std::string customerName);
 
-    void setMoneyOnScreen(double money);
+    void setMoneyOnScreen();
 
     void setRegularCustomerInfo();
 
@@ -65,6 +65,8 @@ private:
     void setTotalCostOfBoughtProducts();
 
     void addProductsOnScreen(QString productName);
+
+    void updateUserInfoOnScreen();
 
     std::vector<std::string> getProductList();
 

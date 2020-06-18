@@ -39,9 +39,24 @@ double Customer::GetMoney() const {
     return money;
 }
 
+double Customer::GetFinalProductPrice(const Product *product) {
+    double max_discount = std::min( GetPersonalDiscount(), product->GetMaxDiscount() );
+    double total_cost = product->GetPrice() - max_discount;
+    return total_cost;
+}
+
 bool Customer::BuyProduct(const Product& product) {
     double max_discount = std::min( GetPersonalDiscount(), product.GetMaxDiscount() );
     double total_cost = product.GetPrice() - max_discount;
+    if (money >= total_cost) {
+        money -= total_cost;
+        return true;
+    }
+    return false;
+}
+
+bool Customer::BuyProduct(const Product* product) {
+    double total_cost = GetFinalProductPrice(product);
     if (money >= total_cost) {
         money -= total_cost;
         return true;
@@ -67,9 +82,10 @@ std::vector<std::string> Customer::findCustomerInfo(std::string name) {
     std::stringstream ss(all);
 
     std::vector<std::string> resultInfo;
-    std::string nextLine, nextWord;
+    std::string nextLine, nextWord, temp;
     bool customerFound = false;
 
+    std::getline(ss, temp);
     // find our customer line by name
     while (std::getline(ss, nextLine)) {
         std::stringstream ssnextLine(nextLine);

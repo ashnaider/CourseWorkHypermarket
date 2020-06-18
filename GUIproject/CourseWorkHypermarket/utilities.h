@@ -26,6 +26,11 @@ public:
     void replaceSymbol(std::string& str, char what, char forWhat) const;
 
     QString generateFilePathForProduct(QString productClass);
+
+    QString path = "/home/anton/CourseWorkDb/";
+
+    QString passwords = path + "passwords.txt";
+    QString money = path + "money.txt";
 };
 
 #endif // UTILITIES_H

@@ -23,10 +23,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
     connect(registerForm, &RegisterForm::goBackToLoginForm, this, &LoginWindow::show);
 
-//    customerWindow =  new CustomerWindow();
-
-//    connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &MainWindow::show);
-
+    utilities = new Utilities;
 }
 
 LoginWindow::~LoginWindow()
@@ -53,6 +50,7 @@ void LoginWindow::on_goToResgisterButton_clicked()
     this->close();
 }
 
+
 void LoginWindow::on_confirmLoginButton_clicked()
 {
     QString name = ui->loginNameInput->text();
@@ -63,7 +61,7 @@ void LoginWindow::on_confirmLoginButton_clicked()
 
     bool correct = false;
 
-    QFile usersPasswords("/home/anton/CourseWorkDb/passwords.txt");
+    QFile usersPasswords(passwordsFile);
 
     if (!usersPasswords.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QMessageBox::warning(this, "Error!", "Can not open file!");
@@ -78,12 +76,20 @@ void LoginWindow::on_confirmLoginButton_clicked()
 
     std::stringstream ss(all);
 
+    std::string temp;
+    std::getline(ss, temp, ';');
+    std::getline(ss, temp, ';');
+
     std::string strName, strPass;
 
-    while ( ss >> strName >> strPass ) {
+    while (std::getline(ss, strName, ';')) {
+        if (std::getline(ss, strPass, ';')) {
 
-        if (strName == usersName && strPass == usersPass) {
-            correct = true;
+            strName.erase(strName.begin());
+            if (strName == usersName && strPass == usersPass) {
+                correct = true;
+                break;
+            }
         }
     }
 

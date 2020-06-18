@@ -2,11 +2,12 @@
 #define LOGINWINDOW_H
 
 #include <QWidget>
-
-// #include "customer.h"
+#include <QString>
 
 #include "registerform.h"
 #include "customerwindow.h"
+
+#include "utilities.h"
 
 
 namespace Ui {
@@ -39,7 +40,12 @@ private:
 
     CustomerWindow *customerWindow;
 
+    Utilities *utilities;
+
+    QString passwordsFile = "/home/anton/CourseWorkDb/passwords.txt";
+
     bool isCustomerRegular(std::string customerName);
+
 };
 
 #endif // CUSTOMERWINDOW_H
