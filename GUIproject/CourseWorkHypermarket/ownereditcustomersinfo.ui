@@ -26,29 +26,157 @@
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="saveAllPushButton">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>510</y>
-     <width>121</width>
-     <height>41</height>
+     <x>361</x>
+     <y>100</y>
+     <width>511</width>
+     <height>491</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Save all</string>
-   </property>
+   <layout class="QVBoxLayout" name="customersTableInfoVerticalLayout">
+    <item>
+     <widget class="QTableWidget" name="customersInfoTableWidget"/>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="customerTableInfoHorizontalLayout">
+      <item>
+       <widget class="QPushButton" name="addNewCustomerPushButton">
+        <property name="text">
+         <string>Add new</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editCustomerPushButton">
+        <property name="text">
+         <string>Edit</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deleteCustomerPushButton">
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>339</y>
+     <width>341</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="customerEditVerticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="totalCostHorizontalLayout">
+        <item>
+         <widget class="QLabel" name="totalCostLabel">
+          <property name="text">
+           <string>Total Cost of Bought Products:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="totalCostLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="NameHorizontalLayout">
+        <item>
+         <widget class="QLabel" name="NameLabel">
+          <property name="text">
+           <string>Name:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="NameLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="ButtonsHorizontalLayout">
+        <item>
+         <widget class="QPushButton" name="cancelPushButton">
+          <property name="text">
+           <string>Cancel</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="savePushButton">
+          <property name="text">
+           <string>Save</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="saveAllPushButton">
+      <property name="text">
+       <string>Save all</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>100</y>
-     <width>371</width>
-     <height>371</height>
+     <width>341</width>
+     <height>251</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="customerEditVerticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <layout class="QHBoxLayout" name="loginHorizontalLayout">
       <item>
@@ -102,92 +230,6 @@
       </item>
       <item>
        <widget class="QLineEdit" name="moneyLineEdit"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="totalCostHorizontalLayout">
-      <item>
-       <widget class="QLabel" name="totalCostLabel">
-        <property name="text">
-         <string>Total Cost of Bought Products:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="totalCostLineEdit"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="NameHorizontalLayout">
-      <item>
-       <widget class="QLabel" name="NameLabel">
-        <property name="text">
-         <string>Name:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="NameLineEdit"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="ButtonsHorizontalLayout">
-      <item>
-       <widget class="QPushButton" name="cancelPushButton">
-        <property name="text">
-         <string>Cancel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="savePushButton">
-        <property name="text">
-         <string>Save</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>391</x>
-     <y>100</y>
-     <width>481</width>
-     <height>481</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="customersTableInfoVerticalLayout">
-    <item>
-     <widget class="QTableWidget" name="customersInfoTableWidget"/>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="customerTableInfoHorizontalLayout">
-      <item>
-       <widget class="QPushButton" name="addNewCustomerPushButton">
-        <property name="text">
-         <string>Add new</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="editCustomerPushButton">
-        <property name="text">
-         <string>Edit</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="deleteCustomerPushButton">
-        <property name="text">
-         <string>Delete</string>
-        </property>
-       </widget>
       </item>
      </layout>
     </item>

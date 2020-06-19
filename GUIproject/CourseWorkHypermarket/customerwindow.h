@@ -68,8 +68,6 @@ private:
 
     void updateUserInfoOnScreen();
 
-    std::vector<std::string> getProductList();
-
 };
 
 #endif // CUSTOMERWINDOW_H

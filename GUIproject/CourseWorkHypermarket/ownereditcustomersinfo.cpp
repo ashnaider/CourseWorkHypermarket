@@ -14,12 +14,16 @@ OwnerEditCustomersInfo::OwnerEditCustomersInfo(QWidget *parent) :
 
     utilities = new Utilities;
 
-    ui->moneyLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9]+[.][0-9]+"), ui->moneyLineEdit));
-    ui->totalCostLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9]+[.][0-9]+"), ui->totalCostLineEdit));
+    ui->moneyLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9]{7}[.][0-9]{2}"), ui->moneyLineEdit));
+    ui->totalCostLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9]{7}[.][0-9]{2}"), ui->totalCostLineEdit));
+
+    // setVisibleAllCustomersFields(false);
 
     getCustomersInfo();
     setStatusComboBox();
     setCustomersInfoTable();
+
+    this->setFixedSize(this->width(), this->height());
 }
 
 OwnerEditCustomersInfo::~OwnerEditCustomersInfo()
@@ -31,14 +35,6 @@ void OwnerEditCustomersInfo::on_goBackToOwnerButton_clicked()
 {
     this->close();
     emit goBackToOwnerWindow();
-}
-
-QList<QString> OwnerEditCustomersInfo::GetProductInfoHeader(const std::vector<std::string>& productInfoHeader) const {
-    QList<QString> result;
-    for (const auto& word : productInfoHeader) {
-        result.push_back(QString::fromStdString(word));
-    }
-    return result;
 }
 
 void OwnerEditCustomersInfo::setStatusComboBox() {
@@ -54,9 +50,32 @@ void OwnerEditCustomersInfo::setVisibleRegularCustomersFields(bool set) {
     ui->NameLineEdit->setVisible(set);
 }
 
+void OwnerEditCustomersInfo::setVisibleAllCustomersFields(bool set) {
+    ui->login->setVisible(set);
+    ui->loginLineEdit->setVisible(set);
+
+    ui->passwordLabel->setVisible(set);
+    ui->passwordLineEdit->setVisible(set);
+
+    ui->statusLabel->setVisible(set);
+    ui->statusComboBox->setVisible(set);
+
+    ui->moneyLabel->setVisible(set);
+    ui->moneyLineEdit->setVisible(set);
+
+    ui->cancelPushButton->setVisible(set);
+
+    ui->savePushButton->setVisible(set);
+
+    ui->saveAllPushButton->setVisible(set);
+
+    setVisibleRegularCustomersFields(set);
+}
+
+
 void OwnerEditCustomersInfo::setCustomersInfoTable() {
 
-    QList<QString> qListInfoHeader = GetProductInfoHeader(infoHeader);
+    QList<QString> qListInfoHeader = utilities->GetProductInfoHeader(infoHeader);
 
     int rows = totalInfo.size();
     int cols;
@@ -93,15 +112,11 @@ void OwnerEditCustomersInfo::setCustomersInfoTable() {
 
 void OwnerEditCustomersInfo::on_cancelPushButton_clicked()
 {
-    ui->loginLineEdit->clear();
-    ui->passwordLineEdit->clear();
-    ui->moneyLineEdit->clear();
-    ui->totalCostLineEdit->clear();
-    ui->NameLineEdit->clear();
+    // setVisibleAllCustomersFields(false);
 
-    ui->statusComboBox->setCurrentIndex(0);
+    clearAllLineEdits();
 
-    setVisibleRegularCustomersFields(true);
+    // setVisibleRegularCustomersFields(true);
 }
 
 
@@ -131,7 +146,7 @@ void OwnerEditCustomersInfo::getCustomersInfo() {
 
 void OwnerEditCustomersInfo::on_deleteCustomerPushButton_clicked()
 {
-    int currRow = ui->customersInfoTableWidget->currentRow();
+    currRow = ui->customersInfoTableWidget->currentRow();
     if (currRow == -1) {
         QMessageBox::warning(this, "Info", "Please select user to delete");
         return ;
@@ -144,11 +159,14 @@ void OwnerEditCustomersInfo::on_deleteCustomerPushButton_clicked()
 
 void OwnerEditCustomersInfo::on_editCustomerPushButton_clicked()
 {
+    currOperation = EDIT;
     currRow = ui->customersInfoTableWidget->currentRow();
     if (currRow == -1) {
         QMessageBox::warning(this, "Info", "Please select user to edit");
         return ;
     }
+
+    // setVisibleAllCustomersFields(true);
 
     fillLineEdits();
 }
@@ -160,11 +178,12 @@ void OwnerEditCustomersInfo::fillLineEdits() {
 
     ui->moneyLineEdit->setText(QString::fromStdString(currRowVec[3]));
 
+    ui->totalCostLineEdit->setText(QString::fromStdString(currRowVec[4]));
+    ui->NameLineEdit->setText(QString::fromStdString(currRowVec[5]));
+
     if (isRegular()) {
         setVisibleRegularCustomersFields(true);
         ui->statusComboBox->setCurrentIndex(0);
-        ui->totalCostLineEdit->setText(QString::fromStdString(currRowVec[4]));
-        ui->NameLineEdit->setText(QString::fromStdString(currRowVec[5]));
     } else {
         ui->statusComboBox->setCurrentIndex(1);
         setVisibleRegularCustomersFields(false);
@@ -178,9 +197,50 @@ bool OwnerEditCustomersInfo::isRegular() {
     return false;
 }
 
+void OwnerEditCustomersInfo::updateTotalInfo(std::vector<std::string> &v) {
+    if (currOperation == EDIT) {
+        totalInfo[currRow] = v;
+    } else if (currOperation == ADD_NEW) {
+        std::string currNewLogin = v[0];
+
+        for (const auto& row : totalInfo) {
+            if (row[0] == currNewLogin) {
+                QMessageBox::warning(this, "Warning", "This user is already exist!\nIf you want to edit him, please select and press edit");
+                return ;
+            }
+        }
+        totalInfo.push_back(v);
+    }
+}
+
 void OwnerEditCustomersInfo::on_savePushButton_clicked()
 {
+    std::vector<std::string> infoFromLineEdits = getInfoFromLineEdits();
 
+    if (isValidLineEdits(infoFromLineEdits)) {
+        updateTotalInfo(infoFromLineEdits);
+
+        setCustomersInfoTable();
+        // setVisibleAllCustomersFields(false);
+    } else {
+        return ;
+    }
+}
+
+bool OwnerEditCustomersInfo::isValidLineEdits(const std::vector<std::string> &v) {
+    int stop;
+    if (editableCustomer == REGULAR) {
+        stop = 6;
+    } else if (editableCustomer == USUAL){
+        stop = 4;
+    }
+    for (int i = 0; i < stop; ++i) {
+        if (v[i].empty()) {
+            QMessageBox::warning(this, "warning", "Fill in all fields please");
+            return false;
+        }
+    }
+    return true;
 }
 
 std::vector<std::string> OwnerEditCustomersInfo::getInfoFromLineEdits() {
@@ -196,5 +256,53 @@ std::vector<std::string> OwnerEditCustomersInfo::getInfoFromLineEdits() {
     result.push_back(temp.toStdString());
 
     temp = ui->moneyLineEdit->text();
+    result.push_back(temp.toStdString());
+
+    temp = ui->totalCostLineEdit->text();
+    result.push_back(temp.toStdString());
+
+    temp = ui->NameLineEdit->text();
+    result.push_back(temp.toStdString());
+
+    return result;
+}
+
+void OwnerEditCustomersInfo::on_addNewCustomerPushButton_clicked()
+{
+    currOperation = ADD_NEW;
+    clearAllLineEdits();
+    setVisibleAllCustomersFields(true);
+//    std::vector<std::string> info = getInfoFromLineEdits();
+//    updateTotalInfo(info);
+}
+
+
+void OwnerEditCustomersInfo::on_statusComboBox_currentTextChanged(const QString &arg1)
+{
+    if (arg1 == "usual") {
+        editableCustomer = USUAL;
+        setVisibleRegularCustomersFields(false);
+        clearRegularCustomersLineEdits();
+    } else {
+        editableCustomer = REGULAR;
+        setVisibleRegularCustomersFields(true);
+    }
+}
+
+
+void OwnerEditCustomersInfo::clearAllLineEdits() {
+    ui->loginLineEdit->clear();
+    ui->passwordLineEdit->clear();
+    ui->moneyLineEdit->clear();
+
+    ui->statusComboBox->setCurrentIndex(0);
+
+    clearRegularCustomersLineEdits();
 
 }
+
+void OwnerEditCustomersInfo::clearRegularCustomersLineEdits() {
+    ui->totalCostLineEdit->clear();
+    ui->NameLineEdit->clear();
+}
+

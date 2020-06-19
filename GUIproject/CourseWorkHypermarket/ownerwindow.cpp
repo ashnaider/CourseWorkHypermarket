@@ -16,6 +16,8 @@ OwnerWindow::OwnerWindow(QWidget *parent) :
     ownerEditCustomersInfo = new OwnerEditCustomersInfo();
 
     connect(ownerEditCustomersInfo, &OwnerEditCustomersInfo::goBackToOwnerWindow, this, &OwnerWindow::show);
+
+    this->setFixedSize(this->width(), this->height());
 }
 
 OwnerWindow::~OwnerWindow()

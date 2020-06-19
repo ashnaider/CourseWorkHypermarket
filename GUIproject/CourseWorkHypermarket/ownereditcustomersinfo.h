@@ -5,6 +5,16 @@
 
 #include "utilities.h"
 
+enum CurrOperation {
+    EDIT,
+    ADD_NEW
+};
+
+enum EditableCustomer {
+    USUAL,
+    REGULAR
+};
+
 namespace Ui {
 class OwnerEditCustomersInfo;
 }
@@ -31,6 +41,10 @@ private slots:
 
     void on_savePushButton_clicked();
 
+    void on_addNewCustomerPushButton_clicked();
+
+    void on_statusComboBox_currentTextChanged(const QString &arg1);
+
 private:
     Ui::OwnerEditCustomersInfo *ui;
     Utilities *utilities;
@@ -38,15 +52,19 @@ private:
     std::vector<std::string> infoHeader;
     std::vector<std::vector<std::string>> totalInfo;
 
-    int currRow = -1;
+    CurrOperation currOperation = ADD_NEW;
 
-    QList<QString> GetProductInfoHeader(const std::vector<std::string>& productInfoHeader) const;
+    EditableCustomer editableCustomer = REGULAR;
+
+    int currRow = -1;
 
     void setCustomersInfoTable();
 
     void setLineEdits();
 
     void setVisibleRegularCustomersFields(bool set);
+
+    void setVisibleAllCustomersFields(bool set);
 
     void setStatusComboBox();
 
@@ -58,6 +76,13 @@ private:
 
     std::vector<std::string> getInfoFromLineEdits();
 
+    bool isValidLineEdits(const std::vector<std::string>& v);
+
+    void clearAllLineEdits();
+
+    void clearRegularCustomersLineEdits();
+
+    void updateTotalInfo(std::vector<std::string>& v);
 };
 
 #endif // OWNEREDITCUSTOMERSINFO_H

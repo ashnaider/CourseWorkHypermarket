@@ -96,3 +96,23 @@ void Utilities::replaceSymbol(std::string &str, char what, char forWhat) const {
 QString Utilities::generateFilePathForProduct(QString productClass) {
     return "/home/anton/CourseWorkDb/" + productClass + ".txt";
 }
+
+std::vector<std::string> Utilities::getProductList() {
+    QString fileName = "/home/anton/CourseWorkDb/products.txt";
+    std::vector<std::vector<std::string>> allFile = readFileByWord(fileName);
+
+    std::vector<std::string> productList;
+    for (const auto& line : allFile) {
+        productList.push_back(line[0]);
+    }
+
+    return productList;
+}
+
+QList<QString> Utilities::GetProductInfoHeader(const std::vector<std::string> &productInfoHeader) {
+    QList<QString> result;
+    for (const auto& word : productInfoHeader) {
+        result.push_back(QString::fromStdString(word));
+    }
+    return result;
+}

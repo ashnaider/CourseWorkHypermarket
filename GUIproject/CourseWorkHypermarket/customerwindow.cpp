@@ -37,6 +37,8 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
     setProductsComboBox();
 
     utilities = new Utilities();
+
+    this->setFixedSize(this->width(), this->height());
 }
 
 CustomerWindow::~CustomerWindow()
@@ -84,20 +86,9 @@ void CustomerWindow::setRegularCustomerInfo() {
 
 
 /* combo box functions */
-std::vector<std::string> CustomerWindow::getProductList() {
-    QString fileName = "/home/anton/CourseWorkDb/products.txt";
-    std::vector<std::vector<std::string>> allFile = utilities->readFileByWord(fileName);
-
-    std::vector<std::string> productList;
-    for (const auto& line : allFile) {
-        productList.push_back(line[0]);
-    }
-
-    return productList;
-}
 
 void CustomerWindow::setProductsComboBox() {
-    std::vector<std::string> productList = getProductList();
+    std::vector<std::string> productList = utilities->getProductList();
 
     for (const auto& product : productList) {
         ui->productListComboBox->addItem(QString::fromStdString(product));

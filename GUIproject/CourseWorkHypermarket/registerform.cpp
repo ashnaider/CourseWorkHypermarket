@@ -16,6 +16,8 @@ RegisterForm::RegisterForm(QWidget *parent) :
     ui->setupUi(this);
 
     QWidget::setWindowTitle("Registration");
+
+    this->setFixedSize(this->width(), this->height());
 }
 
 RegisterForm::~RegisterForm()

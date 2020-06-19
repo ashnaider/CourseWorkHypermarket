@@ -24,6 +24,8 @@ LoginWindow::LoginWindow(QWidget *parent) :
     connect(registerForm, &RegisterForm::goBackToLoginForm, this, &LoginWindow::show);
 
     utilities = new Utilities;
+
+    this->setFixedSize(this->width(), this->height());
 }
 
 LoginWindow::~LoginWindow()

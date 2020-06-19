@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
     loginWindow = new LoginWindow();
 
     connect(loginWindow, &LoginWindow::toMainWindowFromLogin, this, &MainWindow::show);
+
+    this->setFixedSize(this->width(), this->height());
 }
 
 MainWindow::~MainWindow()

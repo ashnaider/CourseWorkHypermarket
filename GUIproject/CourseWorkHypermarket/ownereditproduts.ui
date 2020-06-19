@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>642</width>
-    <height>454</height>
+    <width>841</width>
+    <height>669</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="goBackToOwnerButton">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>610</x>
      <y>30</y>
      <width>161</width>
      <height>51</height>
@@ -26,18 +26,370 @@
     <string>back</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>200</y>
-     <width>191</width>
-     <height>61</height>
+     <x>290</x>
+     <y>110</y>
+     <width>531</width>
+     <height>511</height>
     </rect>
    </property>
-   <property name="text">
-    <string>You are editing produts</string>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTableWidget" name="productListTableWidget"/>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="addNewPushButton">
+        <property name="text">
+         <string>Add new</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editPushButton">
+        <property name="text">
+         <string>Edit</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deletePushButton">
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>30</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Edit</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="productClassesComboBox"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>110</y>
+     <width>261</width>
+     <height>511</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="firmLabel">
+          <property name="text">
+           <string>Firm:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="firmLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="nameLabel">
+          <property name="text">
+           <string>Name:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="nameLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="priceLabel">
+          <property name="text">
+           <string>Price:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="priceLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QLabel" name="maxDiscountLabel">
+          <property name="text">
+           <string>Max discount:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="maxDiscountLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <widget class="QLabel" name="contractLabel">
+          <property name="text">
+           <string>Contract:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="contractRadioButton">
+          <property name="text">
+           <string>has contract</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="QLabel" name="maxSimCardsLabel">
+          <property name="text">
+           <string>Max SIM cards:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="maxSimCardsSpinBox"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QLabel" name="osLabel">
+          <property name="text">
+           <string>Operating System:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="osComboBox">
+          <item>
+           <property name="text">
+            <string>Android</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>IOS</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Windows Phone</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Blackberry</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <item>
+         <widget class="QLabel" name="programmsLabel">
+          <property name="text">
+           <string>Programms:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="programmsLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_11">
+        <item>
+         <widget class="QLabel" name="DiagonalSizeLabel">
+          <property name="text">
+           <string>Diagonal size:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="diagonalSizeComboBox">
+          <property name="currentText">
+           <string>15.6</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>9</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>10</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>12.5</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>13</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>14</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>15</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>15.6</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>17</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <widget class="QLabel" name="weightLabel">
+          <property name="text">
+           <string>Weight:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="weightLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <item>
+         <widget class="QLabel" name="cpuCoresLabel">
+          <property name="text">
+           <string>CPU cores:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="cpuCoresLineEdit"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_14">
+        <item>
+         <widget class="QLabel" name="mainMemoryLabel">
+          <property name="text">
+           <string>Main memory:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mainMemoryLineEdit"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_15">
+        <item>
+         <widget class="QPushButton" name="cancelPushButton">
+          <property name="text">
+           <string>Cancel</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="savePushButton">
+          <property name="text">
+           <string>Save</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="saveAllpushButton">
+        <property name="text">
+         <string>Save all</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

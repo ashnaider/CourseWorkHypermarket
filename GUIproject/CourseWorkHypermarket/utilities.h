@@ -9,6 +9,7 @@
 #include <QTextStream>
 #include <QString>
 #include <QDebug>
+#include <QList>
 
 #define PRODUCT_INFO std::vector<std::vector<std::string>>
 
@@ -26,6 +27,10 @@ public:
     void replaceSymbol(std::string& str, char what, char forWhat) const;
 
     QString generateFilePathForProduct(QString productClass);
+
+    QList<QString> GetProductInfoHeader(const std::vector<std::string>& productInfoHeader);
+
+    std::vector<std::string> getProductList();
 
     QString path = "/home/anton/CourseWorkDb/";
 
