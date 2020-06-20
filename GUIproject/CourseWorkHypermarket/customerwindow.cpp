@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
     QWidget(parent),
@@ -169,11 +170,37 @@ void CustomerWindow::on_buyProductPushButton_clicked()
          for (const auto row : selectedRows) {
             if (customer->BuyProduct(productList->ptrVecProductList[row]) ) {
                 updateUserInfoOnScreen();
+                saveInfo();
 
             } else {
                 QMessageBox::warning(this, "Oops", "You havn't got enought money!");
             }
          }
     }
+}
+
+
+void CustomerWindow::saveInfo() {
+    std::vector<std::vector<std::string>> moneyInfo = utilities->readFileByWord(utilities->moneyFile,
+                                                                                true);
+
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << customer->GetMoney();
+    std::string newMoney = stream.str();
+
+    stream.str("");
+    stream << std::fixed << std::setprecision(2) << customer->GetTotalCostOfBoughtProducts();
+    std::string newBought = stream.str();
+
+    for (auto& line : moneyInfo) {
+        if (line[0] == customerName) {
+            line[2] = newMoney;
+            line[3] = newBought;
+        }
+    }
+    std::vector<std::string> header = moneyInfo[0];
+    moneyInfo.erase(moneyInfo.begin());
+
+    utilities->saveInfoToFile(header, moneyInfo, utilities->moneyFile);
 }
 

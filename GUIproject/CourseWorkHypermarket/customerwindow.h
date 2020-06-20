@@ -68,6 +68,8 @@ private:
 
     void updateUserInfoOnScreen();
 
+    void saveInfo();
+
 };
 
 #endif // CUSTOMERWINDOW_H
