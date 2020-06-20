@@ -16,3 +16,6 @@
 
 SharedLibrary/build
 
+# ignore gui build dir
+GUIproject/build-CourseWorkHypermarket-Desktop-Debug
+

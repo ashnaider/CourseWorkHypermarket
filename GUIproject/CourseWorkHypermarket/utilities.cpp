@@ -143,20 +143,29 @@ std::string Utilities::myToLower(const std::string& s) {
   return result;
 }
 
-bool Utilities::saveInfoToFile(const std::vector<std::vector<std::string> > &info, std::string filePath) {
-    QFile file(QString::fromStdString(filePath));
-          if(file.open(QIODevice::ReadWrite | QIODevice::Text))
+bool Utilities::saveInfoToFile(const std::vector<std::string>& header,
+                               const std::vector<std::vector<std::string>>& info, QString filePath) {
+    QFile file(filePath);
+          if(file.open(QIODevice::WriteOnly | QIODevice::Text))
           {
               if (!file.exists()) {
                   qDebug() << "Error while opening file to write!";
                   return false;
               }
-              // We're going to streaming text to the file
+
               QTextStream stream(&file);
 
-              stream.readLine();
-              stream << "some text\n";
-              stream << "more text on next line";
+              for (const auto& i : header) {
+                  stream << QString::fromStdString(i) << ";";
+              }
+              stream << endl;
+
+              for (const auto& i : info) {
+                  for (const auto& j : i) {
+                      stream << QString::fromStdString(j) << ";";
+                  }
+                  stream << endl;
+              }
 
               file.flush();
               file.close();

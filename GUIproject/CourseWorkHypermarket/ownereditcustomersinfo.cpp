@@ -125,6 +125,9 @@ void OwnerEditCustomersInfo::getCustomersInfo() {
     std::vector<std::vector<std::string>> customersInfo = utilities->readFileByWord(utilities->moneyFile, true);
     std::vector<std::vector<std::string>> customersPasswords = utilities->readFileByWord(utilities->passwordsFile, true);
 
+    moneyHeader = customersInfo[0];
+    passwordsHeader = customersPasswords[0];
+    totalInfo.clear();
     std::vector<std::string> temp;
     for (int i = 0; i < customersInfo.size(); ++i) {
         bool was = false;
@@ -225,6 +228,7 @@ void OwnerEditCustomersInfo::on_savePushButton_clicked()
         updateTotalInfo(infoFromLineEdits);
 
         setCustomersInfoTable();
+        clearAllLineEdits();
         // setVisibleAllCustomersFields(false);
     } else {
         return ;
@@ -322,5 +326,51 @@ void OwnerEditCustomersInfo::on_revertChangesPushButton_clicked()
         currTableWasChanged = false;
     } else if (reply == QMessageBox::No) {
         return ;
+    }
+}
+
+void OwnerEditCustomersInfo::on_saveAllPushButton_clicked()
+{
+    saveAll();
+    clearAllLineEdits();
+}
+
+
+void OwnerEditCustomersInfo::saveAll() {
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Save", "All changes will be saved",
+                                  QMessageBox::Ok|QMessageBox::Cancel);
+
+    if (reply) {
+
+//            QString path = QCoreApplication::applicationDirPath();
+//            QMessageBox::information(this, "app dir", "app dir is " + path);
+
+        std::vector<std::vector<std::string>> moneyInfo;
+        std::vector<std::string> temp;
+        for (int i = 0; i < totalInfo.size(); ++i) {
+            for (int j = 0; j < totalInfo[0].size(); ++j) {
+                if (j == 1) {
+                    continue;
+                }
+                temp.push_back(totalInfo[i][j]);
+            }
+            moneyInfo.push_back(temp);
+            temp.clear();
+        }
+
+        QString path = utilities->moneyFile;
+        utilities->saveInfoToFile(moneyHeader, moneyInfo, path);
+
+        std::vector<std::vector<std::string>> passwordsInfo;
+        for (int i = 0; i < totalInfo.size(); ++i) {
+            temp.push_back(totalInfo[i][0]);
+            temp.push_back(totalInfo[i][1]);
+            passwordsInfo.push_back(temp);
+            temp.clear();
+        }
+
+        path = utilities->passwordsFile;
+        utilities->saveInfoToFile(passwordsHeader, passwordsInfo, path);
     }
 }

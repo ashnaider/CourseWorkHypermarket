@@ -40,6 +40,9 @@ void OwnerWindow::on_toEditProdutsButton_clicked()
 
 void OwnerWindow::on_editCustomersInfoButton_clicked()
 {
+    ownerEditCustomersInfo->getCustomersInfo();
+    ownerEditCustomersInfo->setCustomersInfoTable();
+
     ownerEditCustomersInfo->show();
     this->close();
 }

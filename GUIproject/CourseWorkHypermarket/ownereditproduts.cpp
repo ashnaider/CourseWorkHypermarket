@@ -32,6 +32,10 @@ OwnerEditProduts::~OwnerEditProduts()
 
 void OwnerEditProduts::on_goBackToOwnerButton_clicked()
 {
+    if (currTableWasChanged) {
+        saveAll();
+    }
+
     this->close();
     emit goBackToOwnerButton();
 }
@@ -126,12 +130,12 @@ void OwnerEditProduts::deleteInputWidget(const QString &widgetName) {
 void OwnerEditProduts::on_productClassesComboBox_currentIndexChanged(const QString &arg1)
 {
     if (currTableWasChanged) {
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this, "Save", "Save information that you changed?",
-                                      QMessageBox::Ok|QMessageBox::Cancel);
-        if (reply == QMessageBox::Ok) {
-            // save info to file
-        }
+//        QMessageBox::StandardButton reply;
+//        reply = QMessageBox::question(this, "Save", "Save information that you changed?",
+//                                      QMessageBox::Ok|QMessageBox::Cancel);
+//        if (reply == QMessageBox::Ok) {
+            saveAll();
+//        }
     }
 
     clearLineInputs();
@@ -297,7 +301,7 @@ void OwnerEditProduts::on_savePushButton_clicked()
             currProductList.push_back(info);
         }
     }
-
+    currTableWasChanged = true;
     clearLineInputs();
     setProductListTable();
 }
@@ -382,6 +386,11 @@ void OwnerEditProduts::on_revertChangesPushButton_clicked()
 
 void OwnerEditProduts::on_saveAllpushButton_clicked()
 {
+    saveAll();
+    currTableWasChanged = false;
+}
+
+void OwnerEditProduts::saveAll() {
     if (currTableWasChanged) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, "Save", "All changes will be saved",
@@ -389,10 +398,19 @@ void OwnerEditProduts::on_saveAllpushButton_clicked()
 
         if (reply) {
             // save to file
-            QString path = QCoreApplication::applicationDirPath();
-            QMessageBox::information(this, "app dir", "app dir is " + path);
+//            QString path = QCoreApplication::applicationDirPath();
+//            QMessageBox::information(this, "app dir", "app dir is " + path);
 
-//            utilities->saveInfoToFile({}, "/home/anton/CourseWorkDb/test.txt");
+            QString path;
+            if (currProductClass == MOBILEPHONE) {
+                path = utilities->mobilePhonesFile;
+            } else if (currProductClass == SMARTPHONE) {
+                path = utilities->smartphonesFile;
+            } else if (currProductClass == LAPTOP) {
+                path = utilities->laptopsFile;
+            }
+            utilities->saveInfoToFile(currProductListHeader, currProductList, path);
         }
     }
 }
+

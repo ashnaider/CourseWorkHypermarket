@@ -114,6 +114,8 @@ private:
     std::vector<std::string> getInfoFromLineEdits();
 
     bool productExist(const std::vector<std::string>& product);
+
+    void saveAll();
 };
 
 #endif // OWNEREDITPRODUTS_H

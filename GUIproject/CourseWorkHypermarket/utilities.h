@@ -51,7 +51,9 @@ public:
 
     std::string getUnique(const std::string& s);
 
-    bool saveInfoToFile(const std::vector<std::vector<std::string>>& info, std::string file);
+    bool saveInfoToFile(const std::vector<std::string>& header,
+                        const std::vector<std::vector<std::string>>& info,
+                        QString file);
 };
 
 #endif // UTILITIES_H

@@ -37,6 +37,10 @@ public:
         REGULAR
     };
 
+    void setCustomersInfoTable();
+
+    void getCustomersInfo();
+
 signals:
     void goBackToOwnerWindow();
 
@@ -57,9 +61,14 @@ private slots:
 
     void on_revertChangesPushButton_clicked();
 
+    void on_saveAllPushButton_clicked();
+
 private:
     Ui::OwnerEditCustomersInfo *ui;
     Utilities *utilities;
+
+    std::vector<std::string> passwordsHeader;
+    std::vector<std::string> moneyHeader;
 
     std::vector<std::string> infoHeader;
     std::vector<std::vector<std::string>> totalInfo;
@@ -72,10 +81,7 @@ private:
 
     bool currTableWasChanged = false;
 
-
     int currRow = -1;
-
-    void setCustomersInfoTable();
 
     void setLineEdits();
 
@@ -84,8 +90,6 @@ private:
     void setVisibleAllCustomersFields(bool set);
 
     void setStatusComboBox();
-
-    void getCustomersInfo();
 
     void fillLineEdits();
 
@@ -100,6 +104,8 @@ private:
     void clearRegularCustomersLineEdits();
 
     void updateTotalInfo(std::vector<std::string>& v);
+
+    void saveAll();
 };
 
 #endif // OWNEREDITCUSTOMERSINFO_H

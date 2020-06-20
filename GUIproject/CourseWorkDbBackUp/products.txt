@@ -1,0 +1,4 @@
+productClass;pathToFile;
+MobilePhones;..~/CourseWorkDb/MobilePhones.txt;
+Smartphones;..~/CourseWorkDb/Smartphones.txt;
+Laptops;..~/CourseWorkDb/Laptops.txt;
