@@ -132,13 +132,6 @@ void CustomerWindow::addProductsOnScreen(QString productName)
     }
 }
 
-void CustomerWindow::on_findProductsButton_clicked()
-{
-    QString productName = ui->productListComboBox->currentText();
-
-    addProductsOnScreen(productName);
-}
-
 void CustomerWindow::updateUserInfoOnScreen() {
     setMoneyOnScreen();
     if (isCustomerRegularBool) {
@@ -204,3 +197,8 @@ void CustomerWindow::saveInfo() {
     utilities->saveInfoToFile(header, moneyInfo, utilities->moneyFile);
 }
 
+
+void CustomerWindow::on_productListComboBox_currentTextChanged(const QString &arg1)
+{
+    addProductsOnScreen(arg1);
+}

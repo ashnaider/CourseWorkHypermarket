@@ -33,9 +33,9 @@ signals:
 private slots:
     void on_backToLoginWindowFromCustomerButton_clicked();
 
-    void on_findProductsButton_clicked();
-
     void on_buyProductPushButton_clicked();
+
+    void on_productListComboBox_currentTextChanged(const QString &arg1);
 
 private:
     Ui::CustomerWindow *ui;
