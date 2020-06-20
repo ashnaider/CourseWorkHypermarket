@@ -18,6 +18,8 @@ RegisterForm::RegisterForm(QWidget *parent) :
     QWidget::setWindowTitle("Registration");
 
     this->setFixedSize(this->width(), this->height());
+
+    utilities = new Utilities;
 }
 
 RegisterForm::~RegisterForm()
@@ -33,7 +35,7 @@ void RegisterForm::on_finishRegistrationButton_clicked()
     std::string strNewName = newName.toStdString();
     std::string strNewPass = newPass.toStdString();
 
-    QFile usersPasswords("/home/anton/CourseWorkDb/passwords.txt");
+    QFile usersPasswords(utilities->passwordsFile);
 
     if (!usersPasswords.open(QIODevice::ReadWrite | QIODevice::Text)) {
                     QMessageBox::warning(this, "Error!", "Can not open file!");
@@ -48,21 +50,28 @@ void RegisterForm::on_finishRegistrationButton_clicked()
 
     std::string strName, strPass;
 
+    std::getline(ss, strName, ';');
+    std::getline(ss, strName, ';');
+
     bool correct = true;
 
-    while ( ss >> strName >> strPass ) {
-
-        if (strName == strNewName) {
-            correct = false;
+    while ( std::getline(ss, strName, ';') ) {
+        if (std::getline(ss, strPass, ';')) {
+            strName.erase(strName.begin());
+            if (strName == strNewName) {
+                correct = false;
+            }
         }
     }
-    newName += " ";
-    newPass += "\n";
+    newName += ";";
+    newPass += ";\n";
     if (correct) {
         mystream << newName << newPass;
         QMessageBox::information(this, "Register info", "Registered Successfully!");
 
         usersPasswords.close();
+
+        writeUsersInfo(strNewName);
 
         // go back
         this->close();
@@ -72,6 +81,22 @@ void RegisterForm::on_finishRegistrationButton_clicked()
         QMessageBox::warning(this, "Rgister info", "This name is allready in use.\nPlease choose another one");
     }
     usersPasswords.close();
+}
+
+void RegisterForm::writeUsersInfo(std::string name) {
+    QFile file(utilities->moneyFile);
+    if (!file.open(QIODevice::Append | QIODevice::Text)) {
+                    QMessageBox::warning(this, "Error!", "Can not open file money in register form!");
+            return;
+    }
+
+    QTextStream stream(&file);
+
+    QString temp = ";usual;1500;;;";
+    stream << QString::fromStdString(name) << temp << endl;
+
+    file.flush();
+    file.close();
 }
 
 void RegisterForm::on_BackToLoginButton_clicked()

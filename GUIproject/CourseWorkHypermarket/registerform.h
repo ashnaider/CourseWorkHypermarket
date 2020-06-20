@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "utilities.h"
+
 namespace Ui {
 class RegisterForm;
 }
@@ -25,6 +27,10 @@ private slots:
 
 private:
     Ui::RegisterForm *ui;
+
+    Utilities *utilities;
+
+    void writeUsersInfo(std::string name);
 };
 
 #endif // REGISTERFORM_H

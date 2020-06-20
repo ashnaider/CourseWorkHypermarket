@@ -4,6 +4,6 @@ CustomerList::CustomerList()
 {
     utilities = new Utilities;
 
-    customersInfo = utilities->readFileByWord("/home/anton/CourseWorkDb/money.txt");
+    customersInfo = utilities->readFileByWord(utilities->moneyFile);
 
 }

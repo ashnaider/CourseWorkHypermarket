@@ -63,7 +63,7 @@ void LoginWindow::on_confirmLoginButton_clicked()
 
     bool correct = false;
 
-    QFile usersPasswords(passwordsFile);
+    QFile usersPasswords(utilities->passwordsFile);
 
     if (!usersPasswords.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QMessageBox::warning(this, "Error!", "Can not open file!");

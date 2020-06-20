@@ -122,8 +122,8 @@ void OwnerEditCustomersInfo::on_cancelPushButton_clicked()
 
 
 void OwnerEditCustomersInfo::getCustomersInfo() {
-    std::vector<std::vector<std::string>> customersInfo = utilities->readFileByWord(utilities->money, true);
-    std::vector<std::vector<std::string>> customersPasswords = utilities->readFileByWord(utilities->passwords, true);
+    std::vector<std::vector<std::string>> customersInfo = utilities->readFileByWord(utilities->moneyFile, true);
+    std::vector<std::vector<std::string>> customersPasswords = utilities->readFileByWord(utilities->passwordsFile, true);
 
     std::vector<std::string> temp;
     for (int i = 0; i < customersInfo.size(); ++i) {
@@ -143,6 +143,7 @@ void OwnerEditCustomersInfo::getCustomersInfo() {
 
     infoHeader = totalInfo[0];
     totalInfo.erase(totalInfo.begin());
+    totalInfoCopy = totalInfo;
 }
 
 void OwnerEditCustomersInfo::on_deleteCustomerPushButton_clicked()
@@ -309,3 +310,17 @@ void OwnerEditCustomersInfo::clearRegularCustomersLineEdits() {
     ui->NameLineEdit->clear();
 }
 
+
+void OwnerEditCustomersInfo::on_revertChangesPushButton_clicked()
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Save", "Are you sure you want to return the changes?",
+                                  QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        totalInfo = totalInfoCopy;
+        setCustomersInfoTable();
+        currTableWasChanged = false;
+    } else if (reply == QMessageBox::No) {
+        return ;
+    }
+}

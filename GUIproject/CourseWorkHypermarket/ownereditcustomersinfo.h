@@ -55,6 +55,8 @@ private slots:
 
     void on_statusComboBox_currentTextChanged(const QString &arg1);
 
+    void on_revertChangesPushButton_clicked();
+
 private:
     Ui::OwnerEditCustomersInfo *ui;
     Utilities *utilities;
@@ -62,9 +64,14 @@ private:
     std::vector<std::string> infoHeader;
     std::vector<std::vector<std::string>> totalInfo;
 
+    std::vector<std::vector<std::string>> totalInfoCopy;
+
     CurrOperation currOperation = ADD_NEW;
 
     EditableCustomer editableCustomer = REGULAR;
+
+    bool currTableWasChanged = false;
+
 
     int currRow = -1;
 

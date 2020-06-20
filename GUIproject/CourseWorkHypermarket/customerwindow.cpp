@@ -21,9 +21,13 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    utilities = new Utilities();
+
     QWidget::setWindowTitle("Customer");
 
+    customer = new Customer(customerName);
     isCustomerRegularBool = isCustomerRegular(customerName);
+    delete customer;
 
     if (isCustomerRegularBool) {
         customer = new RegularCustomer(customerName);
@@ -35,8 +39,6 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
     setMoneyOnScreen();
 
     setProductsComboBox();
-
-    utilities = new Utilities();
 
     this->setFixedSize(this->width(), this->height());
 }
@@ -175,40 +177,3 @@ void CustomerWindow::on_buyProductPushButton_clicked()
     }
 }
 
-
-
-
-
-/*
-    // add products to screen
-    QString fullPath = "/home/anton/CourseWorkDb/" + productName + ".txt";
-    std::vector<std::vector<std::string>> products = utilities->readFileByWord(fullPath);
-
-    currentProductList = products;
-
-    // fill productsPriceMap
-    for (const auto& product : currentProductList) {
-        productsPriceMap[product[1]] = std::stod(product[2]);
-    }
-
-    QString imgPath = "/home/anton/CourseWorkDb/img/";
-    QString ext = ".txt";
-    std::string strProductName;
-
-    for (const auto& product : products) {
-        strProductName = product[product.size() - 1];
-        utilities->replaceSymbol(strProductName, ' ', '_');
-        QString totalPath = imgPath + QString::fromStdString(strProductName) + ext;
-
-        // set data for table widget
-
-        QTableWidgetItem *newItem = new QTableWidgetItem("my custom item!");
-        int rows = 5;
-        int cols = 5;
-
-        ui->productListTableWidget->setRowCount(rows);
-        ui->productListTableWidget->setColumnCount(cols);
-
-        ui->productListTableWidget->setItem(3, 3, newItem);
-    }
-*/

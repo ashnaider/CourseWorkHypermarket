@@ -5,3 +5,4 @@ user3;regular;9000;32090;Ivan Ivanovich Ivanov;
 user4;regular;234;5432;Sergey Sergeev;
 user5;usual;300;;;
 user6;usual;10000;;;
+user7;usual;1500;;;

@@ -42,8 +42,6 @@ private:
 
     Utilities *utilities;
 
-    QString passwordsFile = "/home/anton/CourseWorkDb/passwords.txt";
-
     bool isCustomerRegular(std::string customerName);
 
 };

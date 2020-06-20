@@ -3,6 +3,8 @@
 
 #include "product.h"
 
+#include "utilities.h"
+
 #include <vector>
 #include <string>
 
@@ -30,6 +32,8 @@ public:
 protected:
 
     std::vector<std::string> GetUsersInfo();
+
+    Utilities *utilities;
 
     double money;
 };

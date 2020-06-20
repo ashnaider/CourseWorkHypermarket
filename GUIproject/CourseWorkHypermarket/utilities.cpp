@@ -94,11 +94,11 @@ void Utilities::replaceSymbol(std::string &str, char what, char forWhat) const {
 }
 
 QString Utilities::generateFilePathForProduct(QString productClass) {
-    return "/home/anton/CourseWorkDb/" + productClass + ".txt";
+    return dbPath + productClass + ".txt";
 }
 
 std::vector<std::string> Utilities::getProductList() {
-    QString fileName = "/home/anton/CourseWorkDb/products.txt";
+    QString fileName = this->productsFile;
     std::vector<std::vector<std::string>> allFile = readFileByWord(fileName);
 
     std::vector<std::string> productList;
@@ -141,5 +141,27 @@ std::string Utilities::myToLower(const std::string& s) {
     }
   }
   return result;
+}
+
+bool Utilities::saveInfoToFile(const std::vector<std::vector<std::string> > &info, std::string filePath) {
+    QFile file(QString::fromStdString(filePath));
+          if(file.open(QIODevice::ReadWrite | QIODevice::Text))
+          {
+              if (!file.exists()) {
+                  qDebug() << "Error while opening file to write!";
+                  return false;
+              }
+              // We're going to streaming text to the file
+              QTextStream stream(&file);
+
+              stream.readLine();
+              stream << "some text\n";
+              stream << "more text on next line";
+
+              file.flush();
+              file.close();
+              qDebug() << "Writing finished";
+              return true;
+          }
 }
 

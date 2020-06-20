@@ -54,11 +54,17 @@ private slots:
 
     void on_addNewPushButton_clicked();
 
+    void on_revertChangesPushButton_clicked();
+
+    void on_saveAllpushButton_clicked();
+
 private:
     Ui::OwnerEditProduts *ui;
     Utilities *utilities;
 
     std::vector<std::vector<std::string>> currProductList;
+
+    std::vector<std::vector<std::string>> currProductListCopy;
 
     std::vector<std::string> currProductListHeader;
 

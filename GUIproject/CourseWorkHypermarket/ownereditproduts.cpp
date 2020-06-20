@@ -129,6 +129,9 @@ void OwnerEditProduts::on_productClassesComboBox_currentIndexChanged(const QStri
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, "Save", "Save information that you changed?",
                                       QMessageBox::Ok|QMessageBox::Cancel);
+        if (reply == QMessageBox::Ok) {
+            // save info to file
+        }
     }
 
     clearLineInputs();
@@ -142,6 +145,7 @@ void OwnerEditProduts::getCurrProductList(const QString& productClass) {
     currProductList = utilities->readFileByWord(utilities->generateFilePathForProduct(productClass), true);
     currProductListHeader = currProductList[0];
     currProductList.erase(currProductList.begin());
+    currProductListCopy = currProductList;
 }
 
 void OwnerEditProduts::setProductListTable() {
@@ -188,6 +192,7 @@ void OwnerEditProduts::on_deletePushButton_clicked()
         return ;
     }
 
+    clearLineInputs();
     currTableWasChanged = true;
 
     currProductList.erase(currProductList.begin() + currRow);
@@ -359,4 +364,35 @@ void OwnerEditProduts::on_addNewPushButton_clicked()
 {
     clearLineInputs();
     currOperation = ADD_NEW;
+}
+
+void OwnerEditProduts::on_revertChangesPushButton_clicked()
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Save", "Are you sure you want to return the changes?",
+                                  QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        currProductList = currProductListCopy;
+        setProductListTable();
+        currTableWasChanged = false;
+    } else if (reply == QMessageBox::No) {
+        return ;
+    }
+}
+
+void OwnerEditProduts::on_saveAllpushButton_clicked()
+{
+    if (currTableWasChanged) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Save", "All changes will be saved",
+                                      QMessageBox::Ok|QMessageBox::Cancel);
+
+        if (reply) {
+            // save to file
+            QString path = QCoreApplication::applicationDirPath();
+            QMessageBox::information(this, "app dir", "app dir is " + path);
+
+//            utilities->saveInfoToFile({}, "/home/anton/CourseWorkDb/test.txt");
+        }
+    }
 }

@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = CourseWorkHypermarket1.0.0
-DISTDIR = /home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/build-CourseWorkHypermarket-Desktop-Debug/.tmp/CourseWorkHypermarket1.0.0
+DISTDIR = /home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/build-CourseWorkHypermarket-Desktop-Debug/.tmp/CourseWorkHypermarket1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -59,7 +59,14 @@ SOURCES       = ../CourseWorkHypermarket/main.cpp \
 		../CourseWorkHypermarket/loginwindow.cpp \
 		../CourseWorkHypermarket/customerwindow.cpp \
 		../CourseWorkHypermarket/customer.cpp \
-		../CourseWorkHypermarket/product.cpp moc_mainwindow.cpp \
+		../CourseWorkHypermarket/product.cpp \
+		../CourseWorkHypermarket/regularcustomer.cpp \
+		../CourseWorkHypermarket/utilities.cpp \
+		../CourseWorkHypermarket/productlist.cpp \
+		../CourseWorkHypermarket/mobilephone.cpp \
+		../CourseWorkHypermarket/smartphone.cpp \
+		../CourseWorkHypermarket/laptop.cpp \
+		../CourseWorkHypermarket/customerlist.cpp moc_mainwindow.cpp \
 		moc_ownerwindow.cpp \
 		moc_ownereditproduts.cpp \
 		moc_ownereditcustomersinfo.cpp \
@@ -76,6 +83,13 @@ OBJECTS       = main.o \
 		customerwindow.o \
 		customer.o \
 		product.o \
+		regularcustomer.o \
+		utilities.o \
+		productlist.o \
+		mobilephone.o \
+		smartphone.o \
+		laptop.o \
+		customerlist.o \
 		moc_mainwindow.o \
 		moc_ownerwindow.o \
 		moc_ownereditproduts.o \
@@ -137,7 +151,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		../CourseWorkHypermarket/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -165,7 +178,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../CourseWorkHypermarket/loginwindow.h \
 		../CourseWorkHypermarket/customerwindow.h \
 		../CourseWorkHypermarket/customer.h \
-		../CourseWorkHypermarket/product.h ../CourseWorkHypermarket/main.cpp \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
+		../CourseWorkHypermarket/customerlist.h ../CourseWorkHypermarket/main.cpp \
 		../CourseWorkHypermarket/mainwindow.cpp \
 		../CourseWorkHypermarket/ownerwindow.cpp \
 		../CourseWorkHypermarket/ownereditproduts.cpp \
@@ -174,7 +194,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../CourseWorkHypermarket/loginwindow.cpp \
 		../CourseWorkHypermarket/customerwindow.cpp \
 		../CourseWorkHypermarket/customer.cpp \
-		../CourseWorkHypermarket/product.cpp
+		../CourseWorkHypermarket/product.cpp \
+		../CourseWorkHypermarket/regularcustomer.cpp \
+		../CourseWorkHypermarket/utilities.cpp \
+		../CourseWorkHypermarket/productlist.cpp \
+		../CourseWorkHypermarket/mobilephone.cpp \
+		../CourseWorkHypermarket/smartphone.cpp \
+		../CourseWorkHypermarket/laptop.cpp \
+		../CourseWorkHypermarket/customerlist.cpp
 QMAKE_TARGET  = CourseWorkHypermarket
 DESTDIR       = 
 TARGET        = CourseWorkHypermarket
@@ -240,7 +267,6 @@ Makefile: ../CourseWorkHypermarket/CourseWorkHypermarket.pro /usr/lib/x86_64-lin
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -319,7 +345,6 @@ Makefile: ../CourseWorkHypermarket/CourseWorkHypermarket.pro /usr/lib/x86_64-lin
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -358,8 +383,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../CourseWorkHypermarket/mainwindow.h ../CourseWorkHypermarket/ownerwindow.h ../CourseWorkHypermarket/ownereditproduts.h ../CourseWorkHypermarket/ownereditcustomersinfo.h ../CourseWorkHypermarket/registerform.h ../CourseWorkHypermarket/loginwindow.h ../CourseWorkHypermarket/customerwindow.h ../CourseWorkHypermarket/customer.h ../CourseWorkHypermarket/product.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../CourseWorkHypermarket/main.cpp ../CourseWorkHypermarket/mainwindow.cpp ../CourseWorkHypermarket/ownerwindow.cpp ../CourseWorkHypermarket/ownereditproduts.cpp ../CourseWorkHypermarket/ownereditcustomersinfo.cpp ../CourseWorkHypermarket/registerform.cpp ../CourseWorkHypermarket/loginwindow.cpp ../CourseWorkHypermarket/customerwindow.cpp ../CourseWorkHypermarket/customer.cpp ../CourseWorkHypermarket/product.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../CourseWorkHypermarket/mainwindow.h ../CourseWorkHypermarket/ownerwindow.h ../CourseWorkHypermarket/ownereditproduts.h ../CourseWorkHypermarket/ownereditcustomersinfo.h ../CourseWorkHypermarket/registerform.h ../CourseWorkHypermarket/loginwindow.h ../CourseWorkHypermarket/customerwindow.h ../CourseWorkHypermarket/customer.h ../CourseWorkHypermarket/product.h ../CourseWorkHypermarket/regularcustomer.h ../CourseWorkHypermarket/utilities.h ../CourseWorkHypermarket/productlist.h ../CourseWorkHypermarket/mobilephone.h ../CourseWorkHypermarket/smartphone.h ../CourseWorkHypermarket/laptop.h ../CourseWorkHypermarket/customerlist.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../CourseWorkHypermarket/main.cpp ../CourseWorkHypermarket/mainwindow.cpp ../CourseWorkHypermarket/ownerwindow.cpp ../CourseWorkHypermarket/ownereditproduts.cpp ../CourseWorkHypermarket/ownereditcustomersinfo.cpp ../CourseWorkHypermarket/registerform.cpp ../CourseWorkHypermarket/loginwindow.cpp ../CourseWorkHypermarket/customerwindow.cpp ../CourseWorkHypermarket/customer.cpp ../CourseWorkHypermarket/product.cpp ../CourseWorkHypermarket/regularcustomer.cpp ../CourseWorkHypermarket/utilities.cpp ../CourseWorkHypermarket/productlist.cpp ../CourseWorkHypermarket/mobilephone.cpp ../CourseWorkHypermarket/smartphone.cpp ../CourseWorkHypermarket/laptop.cpp ../CourseWorkHypermarket/customerlist.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../CourseWorkHypermarket/mainwindow.ui ../CourseWorkHypermarket/ownerwindow.ui ../CourseWorkHypermarket/ownereditproduts.ui ../CourseWorkHypermarket/ownereditcustomersinfo.ui ../CourseWorkHypermarket/registerform.ui ../CourseWorkHypermarket/loginwindow.ui ../CourseWorkHypermarket/customerwindow.ui $(DISTDIR)/
 
 
@@ -397,48 +422,76 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_ownerwindow.cpp moc_ownereditproduts.cpp moc_ownereditcustomersinfo.cpp moc_registerform.cpp moc_loginwindow.cpp moc_customerwindow.cpp
 moc_mainwindow.cpp: ../CourseWorkHypermarket/loginwindow.h \
 		../CourseWorkHypermarket/registerform.h \
+		../CourseWorkHypermarket/utilities.h \
 		../CourseWorkHypermarket/customerwindow.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
 		../CourseWorkHypermarket/ownerwindow.h \
 		../CourseWorkHypermarket/ownereditproduts.h \
 		../CourseWorkHypermarket/ownereditcustomersinfo.h \
 		../CourseWorkHypermarket/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/mainwindow.h -o moc_mainwindow.cpp
 
 moc_ownerwindow.cpp: ../CourseWorkHypermarket/ownereditproduts.h \
+		../CourseWorkHypermarket/utilities.h \
 		../CourseWorkHypermarket/ownereditcustomersinfo.h \
 		../CourseWorkHypermarket/ownerwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/ownerwindow.h -o moc_ownerwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/ownerwindow.h -o moc_ownerwindow.cpp
 
-moc_ownereditproduts.cpp: ../CourseWorkHypermarket/ownereditproduts.h \
+moc_ownereditproduts.cpp: ../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/ownereditproduts.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/ownereditproduts.h -o moc_ownereditproduts.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/ownereditproduts.h -o moc_ownereditproduts.cpp
 
-moc_ownereditcustomersinfo.cpp: ../CourseWorkHypermarket/ownereditcustomersinfo.h \
+moc_ownereditcustomersinfo.cpp: ../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/ownereditcustomersinfo.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/ownereditcustomersinfo.h -o moc_ownereditcustomersinfo.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/ownereditcustomersinfo.h -o moc_ownereditcustomersinfo.cpp
 
-moc_registerform.cpp: ../CourseWorkHypermarket/registerform.h \
+moc_registerform.cpp: ../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/registerform.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/registerform.h -o moc_registerform.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/registerform.h -o moc_registerform.cpp
 
 moc_loginwindow.cpp: ../CourseWorkHypermarket/registerform.h \
+		../CourseWorkHypermarket/utilities.h \
 		../CourseWorkHypermarket/customerwindow.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
 		../CourseWorkHypermarket/loginwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/loginwindow.h -o moc_loginwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/loginwindow.h -o moc_loginwindow.cpp
 
-moc_customerwindow.cpp: ../CourseWorkHypermarket/customerwindow.h \
+moc_customerwindow.cpp: ../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
+		../CourseWorkHypermarket/customerwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/secondVariantCourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/customerwindow.h -o moc_customerwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/anton/Dev/C++/ONU/CourseWork/CourseWork/GUIproject/CourseWorkHypermarket -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../CourseWorkHypermarket/customerwindow.h -o moc_customerwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -486,7 +539,15 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 main.o: ../CourseWorkHypermarket/main.cpp ../CourseWorkHypermarket/mainwindow.h \
 		../CourseWorkHypermarket/loginwindow.h \
 		../CourseWorkHypermarket/registerform.h \
+		../CourseWorkHypermarket/utilities.h \
 		../CourseWorkHypermarket/customerwindow.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
 		../CourseWorkHypermarket/ownerwindow.h \
 		../CourseWorkHypermarket/ownereditproduts.h \
 		../CourseWorkHypermarket/ownereditcustomersinfo.h
@@ -495,7 +556,15 @@ main.o: ../CourseWorkHypermarket/main.cpp ../CourseWorkHypermarket/mainwindow.h 
 mainwindow.o: ../CourseWorkHypermarket/mainwindow.cpp ../CourseWorkHypermarket/mainwindow.h \
 		../CourseWorkHypermarket/loginwindow.h \
 		../CourseWorkHypermarket/registerform.h \
+		../CourseWorkHypermarket/utilities.h \
 		../CourseWorkHypermarket/customerwindow.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
 		../CourseWorkHypermarket/ownerwindow.h \
 		../CourseWorkHypermarket/ownereditproduts.h \
 		../CourseWorkHypermarket/ownereditcustomersinfo.h \
@@ -504,25 +573,37 @@ mainwindow.o: ../CourseWorkHypermarket/mainwindow.cpp ../CourseWorkHypermarket/m
 
 ownerwindow.o: ../CourseWorkHypermarket/ownerwindow.cpp ../CourseWorkHypermarket/ownerwindow.h \
 		../CourseWorkHypermarket/ownereditproduts.h \
+		../CourseWorkHypermarket/utilities.h \
 		../CourseWorkHypermarket/ownereditcustomersinfo.h \
 		ui_ownerwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ownerwindow.o ../CourseWorkHypermarket/ownerwindow.cpp
 
 ownereditproduts.o: ../CourseWorkHypermarket/ownereditproduts.cpp ../CourseWorkHypermarket/ownereditproduts.h \
+		../CourseWorkHypermarket/utilities.h \
 		ui_ownereditproduts.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ownereditproduts.o ../CourseWorkHypermarket/ownereditproduts.cpp
 
 ownereditcustomersinfo.o: ../CourseWorkHypermarket/ownereditcustomersinfo.cpp ../CourseWorkHypermarket/ownereditcustomersinfo.h \
+		../CourseWorkHypermarket/utilities.h \
 		ui_ownereditcustomersinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ownereditcustomersinfo.o ../CourseWorkHypermarket/ownereditcustomersinfo.cpp
 
 registerform.o: ../CourseWorkHypermarket/registerform.cpp ../CourseWorkHypermarket/registerform.h \
+		../CourseWorkHypermarket/utilities.h \
 		ui_registerform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registerform.o ../CourseWorkHypermarket/registerform.cpp
 
 loginwindow.o: ../CourseWorkHypermarket/loginwindow.cpp ../CourseWorkHypermarket/loginwindow.h \
 		../CourseWorkHypermarket/registerform.h \
+		../CourseWorkHypermarket/utilities.h \
 		../CourseWorkHypermarket/customerwindow.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
 		../CourseWorkHypermarket/mainwindow.h \
 		../CourseWorkHypermarket/ownerwindow.h \
 		../CourseWorkHypermarket/ownereditproduts.h \
@@ -531,15 +612,61 @@ loginwindow.o: ../CourseWorkHypermarket/loginwindow.cpp ../CourseWorkHypermarket
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o ../CourseWorkHypermarket/loginwindow.cpp
 
 customerwindow.o: ../CourseWorkHypermarket/customerwindow.cpp ../CourseWorkHypermarket/customerwindow.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h \
 		ui_customerwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customerwindow.o ../CourseWorkHypermarket/customerwindow.cpp
 
 customer.o: ../CourseWorkHypermarket/customer.cpp ../CourseWorkHypermarket/customer.h \
-		../CourseWorkHypermarket/product.h
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/utilities.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customer.o ../CourseWorkHypermarket/customer.cpp
 
 product.o: ../CourseWorkHypermarket/product.cpp ../CourseWorkHypermarket/product.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o product.o ../CourseWorkHypermarket/product.cpp
+
+regularcustomer.o: ../CourseWorkHypermarket/regularcustomer.cpp ../CourseWorkHypermarket/regularcustomer.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/utilities.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o regularcustomer.o ../CourseWorkHypermarket/regularcustomer.cpp
+
+utilities.o: ../CourseWorkHypermarket/utilities.cpp ../CourseWorkHypermarket/utilities.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilities.o ../CourseWorkHypermarket/utilities.cpp
+
+productlist.o: ../CourseWorkHypermarket/productlist.cpp ../CourseWorkHypermarket/productlist.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h \
+		../CourseWorkHypermarket/laptop.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o productlist.o ../CourseWorkHypermarket/productlist.cpp
+
+mobilephone.o: ../CourseWorkHypermarket/mobilephone.cpp ../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/mobilephone.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mobilephone.o ../CourseWorkHypermarket/mobilephone.cpp
+
+smartphone.o: ../CourseWorkHypermarket/smartphone.cpp ../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/mobilephone.h \
+		../CourseWorkHypermarket/smartphone.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o smartphone.o ../CourseWorkHypermarket/smartphone.cpp
+
+laptop.o: ../CourseWorkHypermarket/laptop.cpp ../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/laptop.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o laptop.o ../CourseWorkHypermarket/laptop.cpp
+
+customerlist.o: ../CourseWorkHypermarket/customerlist.cpp ../CourseWorkHypermarket/customerlist.h \
+		../CourseWorkHypermarket/customer.h \
+		../CourseWorkHypermarket/product.h \
+		../CourseWorkHypermarket/utilities.h \
+		../CourseWorkHypermarket/regularcustomer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customerlist.o ../CourseWorkHypermarket/customerlist.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
