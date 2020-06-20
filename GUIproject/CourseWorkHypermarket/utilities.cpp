@@ -116,3 +116,30 @@ QList<QString> Utilities::GetProductInfoHeader(const std::vector<std::string> &p
     }
     return result;
 }
+
+std::string Utilities::getUnique(const std::string &s) {
+    return myToLower(myTrim(s));
+}
+
+std::string Utilities::myTrim(const std::string &s) {
+    std::string result;
+    for (auto ch : s) {
+        if (ch != ' ') {
+            result.push_back(ch);
+        }
+    }
+    return result;
+}
+
+std::string Utilities::myToLower(const std::string& s) {
+  std::string result;
+  for (auto ch : s) {
+    if (ch >= 'A' && ch <= 'Z') {
+      result.push_back(ch - ('Z' - 'z'));
+    } else {
+      result.push_back(ch);
+    }
+  }
+  return result;
+}
+

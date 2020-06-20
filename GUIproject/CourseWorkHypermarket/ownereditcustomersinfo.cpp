@@ -203,9 +203,11 @@ void OwnerEditCustomersInfo::updateTotalInfo(std::vector<std::string> &v) {
         totalInfo[currRow] = v;
     } else if (currOperation == ADD_NEW) {
         std::string currNewLogin = v[0];
-
+        std::string currNewLoginU = utilities->getUnique(currNewLogin);
+        std::string oldLoginU;
         for (const auto& row : totalInfo) {
-            if (row[0] == currNewLogin) {
+            oldLoginU = utilities->getUnique(row[0]);
+            if (currNewLoginU == oldLoginU) {
                 QMessageBox::warning(this, "Warning", "This user is already exist!\nIf you want to edit him, please select and press edit");
                 return ;
             }

@@ -300,8 +300,11 @@ void OwnerEditProduts::on_savePushButton_clicked()
 bool OwnerEditProduts::productExist(const std::vector<std::string> &product) {
     std::string name = product[1];
 
+    std::string pU, nameU = utilities->getUnique(name);
     for (const auto& p : currProductList) {
-        if (name == p[1]) {
+        pU = utilities->getUnique(p[1]);
+
+        if (nameU == pU) {
             return true;
         }
     }

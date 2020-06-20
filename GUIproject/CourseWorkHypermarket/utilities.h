@@ -36,6 +36,12 @@ public:
 
     QString passwords = path + "passwords.txt";
     QString money = path + "money.txt";
+
+    std::string myTrim(const std::string& s);
+
+    std::string myToLower(const std::string& s);
+
+    std::string getUnique(const std::string& s);
 };
 
 #endif // UTILITIES_H
