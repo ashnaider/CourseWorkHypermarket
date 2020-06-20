@@ -14,8 +14,9 @@ OwnerEditCustomersInfo::OwnerEditCustomersInfo(QWidget *parent) :
 
     utilities = new Utilities;
 
-    ui->moneyLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9]{7}[.][0-9]{2}"), ui->moneyLineEdit));
-    ui->totalCostLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9]{7}[.][0-9]{2}"), ui->totalCostLineEdit));
+    QString doubleRegEx = "[0-9]{0,8}\.[0-9]{0,2}";
+    ui->moneyLineEdit->setValidator(new QRegExpValidator(QRegExp(doubleRegEx), ui->moneyLineEdit));
+    ui->totalCostLineEdit->setValidator(new QRegExpValidator(QRegExp(doubleRegEx), ui->totalCostLineEdit));
 
     // setVisibleAllCustomersFields(false);
 

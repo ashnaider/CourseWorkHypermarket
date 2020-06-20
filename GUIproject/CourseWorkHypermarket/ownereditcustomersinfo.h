@@ -5,15 +5,15 @@
 
 #include "utilities.h"
 
-enum CurrOperation {
-    EDIT,
-    ADD_NEW
-};
+//enum CurrOperation {
+//    EDIT,
+//    ADD_NEW
+//};
 
-enum EditableCustomer {
-    USUAL,
-    REGULAR
-};
+//enum EditableCustomer {
+//    USUAL,
+//    REGULAR
+//};
 
 namespace Ui {
 class OwnerEditCustomersInfo;
@@ -26,6 +26,16 @@ class OwnerEditCustomersInfo : public QWidget
 public:
     explicit OwnerEditCustomersInfo(QWidget *parent = 0);
     ~OwnerEditCustomersInfo();
+
+    enum CurrOperation {
+        EDIT,
+        ADD_NEW
+    };
+
+    enum EditableCustomer {
+        USUAL,
+        REGULAR
+    };
 
 signals:
     void goBackToOwnerWindow();

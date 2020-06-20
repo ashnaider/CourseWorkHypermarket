@@ -26,7 +26,7 @@
     <string>back</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -66,7 +66,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -88,7 +88,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -147,7 +147,7 @@
         <item>
          <widget class="QLabel" name="maxDiscountLabel">
           <property name="text">
-           <string>Max discount:</string>
+           <string>Max discount in %:</string>
           </property>
          </widget>
         </item>
@@ -249,7 +249,7 @@
         <item>
          <widget class="QComboBox" name="diagonalSizeComboBox">
           <property name="currentText">
-           <string>15.6</string>
+           <string>9</string>
           </property>
           <item>
            <property name="text">

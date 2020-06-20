@@ -7,11 +7,11 @@
 
 #include "utilities.h"
 
-enum CurrProductClass {
-    MOBILEPHONE,
-    SMARTPHONE,
-    LAPTOP
-};
+//enum CurrProductClass {
+//    MOBILEPHONE,
+//    SMARTPHONE,
+//    LAPTOP
+//};
 
 namespace Ui {
 class OwnerEditProduts;
@@ -25,6 +25,17 @@ public:
     explicit OwnerEditProduts(QWidget *parent = 0);
     ~OwnerEditProduts();
 
+    enum CurrProductClass {
+        MOBILEPHONE,
+        SMARTPHONE,
+        LAPTOP
+    };
+
+    enum CurrOperation {
+        ADD_NEW,
+        EDIT
+    };
+
 signals:
     void goBackToOwnerButton();
 
@@ -36,6 +47,12 @@ private slots:
     void on_deletePushButton_clicked();
 
     void on_editPushButton_clicked();
+
+    void on_cancelPushButton_clicked();
+
+    void on_savePushButton_clicked();
+
+    void on_addNewPushButton_clicked();
 
 private:
     Ui::OwnerEditProduts *ui;
@@ -52,6 +69,8 @@ private:
     bool currTableWasChanged = false;
 
     CurrProductClass currProductClass;
+
+    CurrOperation currOperation = ADD_NEW;
 
 
 
@@ -81,6 +100,14 @@ private:
     void setVisibleLaptop(bool set);
 
     void deleteInputWidget(const QString& widgetName);
+
+    void setLineEditsValidators();
+
+    void clearLineInputs();
+
+    std::vector<std::string> getInfoFromLineEdits();
+
+    bool productExist(const std::vector<std::string>& product);
 };
 
 #endif // OWNEREDITPRODUTS_H
