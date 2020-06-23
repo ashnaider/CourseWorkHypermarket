@@ -26,11 +26,21 @@ LoginWindow::LoginWindow(QWidget *parent) :
     utilities = new Utilities;
 
     this->setFixedSize(this->width(), this->height());
+
+    setLineEditsValidator();
 }
 
 LoginWindow::~LoginWindow()
 {
     delete ui;
+}
+
+void LoginWindow::setLineEditsValidator() {
+    ui->loginNameInput->setValidator(new QRegExpValidator(QRegExp(utilities->loginRegEx),
+                                                          ui->loginNameInput));
+    ui->loginPasswordInput->setValidator(new QRegExpValidator(QRegExp(utilities->passwordRegEx),
+                                                              ui->loginPasswordInput));
+
 }
 
 void LoginWindow::on_BackToMainWindowFromLoginBtn_clicked()

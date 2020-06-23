@@ -14,7 +14,7 @@ OwnerEditCustomersInfo::OwnerEditCustomersInfo(QWidget *parent) :
 
     utilities = new Utilities;
 
-    QString doubleRegEx = "[0-9]{0,8}\.[0-9]{0,2}";
+    QString doubleRegEx = utilities->doubleRegEx;
     ui->moneyLineEdit->setValidator(new QRegExpValidator(QRegExp(doubleRegEx), ui->moneyLineEdit));
     ui->totalCostLineEdit->setValidator(new QRegExpValidator(QRegExp(doubleRegEx), ui->totalCostLineEdit));
 
@@ -278,6 +278,7 @@ std::vector<std::string> OwnerEditCustomersInfo::getInfoFromLineEdits() {
 void OwnerEditCustomersInfo::on_addNewCustomerPushButton_clicked()
 {
     currOperation = ADD_NEW;
+    ui->customersInfoTableWidget->clearSelection();
     clearAllLineEdits();
     setVisibleAllCustomersFields(true);
 //    std::vector<std::string> info = getInfoFromLineEdits();

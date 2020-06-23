@@ -39,8 +39,7 @@ SOURCES += \
     productlist.cpp \
     mobilephone.cpp \
     smartphone.cpp \
-    laptop.cpp \
-    customerlist.cpp
+    laptop.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -57,8 +56,7 @@ HEADERS += \
     productlist.h \
     mobilephone.h \
     smartphone.h \
-    laptop.h \
-    customerlist.h
+    laptop.h
 
 FORMS += \
         mainwindow.ui \

@@ -20,11 +20,20 @@ RegisterForm::RegisterForm(QWidget *parent) :
     this->setFixedSize(this->width(), this->height());
 
     utilities = new Utilities;
+
+    setLineEditValidation();
 }
 
 RegisterForm::~RegisterForm()
 {
     delete ui;
+}
+
+void RegisterForm::setLineEditValidation() {
+    ui->registerLogin->setValidator(new QRegExpValidator(QRegExp(utilities->loginRegEx),
+                                                          ui->registerPassword));
+    ui->registerPassword->setValidator(new QRegExpValidator(QRegExp(utilities->passwordRegEx),
+                                                              ui->registerLogin));
 }
 
 void RegisterForm::on_finishRegistrationButton_clicked()
@@ -58,7 +67,7 @@ void RegisterForm::on_finishRegistrationButton_clicked()
     while ( std::getline(ss, strName, ';') ) {
         if (std::getline(ss, strPass, ';')) {
             strName.erase(strName.begin());
-            if (strName == strNewName) {
+            if (strName == utilities->getUnique(strNewName)) {
                 correct = false;
             }
         }
@@ -99,9 +108,15 @@ void RegisterForm::writeUsersInfo(std::string name) {
     file.close();
 }
 
+void RegisterForm::clearLineInputFields() {
+    ui->registerLogin->clear();
+    ui->registerPassword->clear();
+}
+
 void RegisterForm::on_BackToLoginButton_clicked()
 {
     // go back
     this->close();
+    clearLineInputFields();
     emit goBackToLoginForm();
 }

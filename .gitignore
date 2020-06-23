@@ -19,3 +19,5 @@ SharedLibrary/build
 # ignore gui build dir
 GUIproject/build-CourseWorkHypermarket-Desktop-Debug
 
+# qt user configuration build file
+*.pro.user

@@ -31,6 +31,10 @@ private:
     Utilities *utilities;
 
     void writeUsersInfo(std::string name);
+
+    void setLineEditValidation();
+
+    void clearLineInputFields();
 };
 
 #endif // REGISTERFORM_H

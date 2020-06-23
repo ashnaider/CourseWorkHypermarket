@@ -1,10 +1,5 @@
 #include "utilities.h"
 
-Utilities::Utilities()
-{
-
-}
-
 std::vector<std::vector<std::string>> Utilities::readFileByWord(QString fileName, bool withHeader/* =false*/) {
     QFile usersFile(fileName);
 

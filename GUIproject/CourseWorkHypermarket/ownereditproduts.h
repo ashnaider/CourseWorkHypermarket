@@ -116,6 +116,7 @@ private:
     bool productExist(const std::vector<std::string>& product);
 
     void saveAll();
+
 };
 
 #endif // OWNEREDITPRODUTS_H

@@ -44,6 +44,8 @@ private:
 
     bool isCustomerRegular(std::string customerName);
 
+    void setLineEditsValidator();
+
 };
 
 #endif // CUSTOMERWINDOW_H

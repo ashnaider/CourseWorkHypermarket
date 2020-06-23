@@ -10,13 +10,13 @@
 #include <QString>
 #include <QDebug>
 #include <QList>
+#include <QMessageBox>
 
 #define PRODUCT_INFO std::vector<std::vector<std::string>>
 
 class Utilities
 {
 public:
-    Utilities();
 
     std::vector<std::vector<std::string>> readFileByWord(QString fileName, bool withHeader = false);
 
@@ -44,6 +44,13 @@ public:
     QString mobilePhonesFile = dbPath + "MobilePhones.txt";
     QString smartphonesFile = dbPath + "Smartphones.txt";
     QString laptopsFile = dbPath + "Laptops.txt";
+
+    QString doubleRegEx = "[0-9]{0,7}[.]{1}[0-9]{0,2}";
+    QString twoDigitsDoubleRegEx = "[0-9]{0,2}[.]{1}[0-9]{0,2}";
+    QString twoDigitsIntRegEx = "[0-9]{1,2}";
+
+    QString loginRegEx = "[a-z0-9]+";
+    QString passwordRegEx = "[a-z0-9!@#$%^&*]+";
 
     std::string myTrim(const std::string& s);
 

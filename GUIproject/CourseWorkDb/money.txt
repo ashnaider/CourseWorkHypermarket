@@ -1,8 +1,9 @@
 Login;Status;Money;Bought;Name;
 user1;usual;230;;;
 user2;usual;1300;;;
-user3;regular;7916.00;33084.00;Ivan Ivanovich Ivanov;
+user3;regular;9000;34897.00;Ivan Ivanovich Ivanov;
 user4;regular;234;5432;Sergey Sergeev;
 user5;usual;300;;;
 user6;usual;10000;;;
 user8;regular;1500;3245;sdfg fdg gfd;
+user7;usual;401.00;0.00;;

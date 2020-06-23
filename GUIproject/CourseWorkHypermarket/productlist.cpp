@@ -92,13 +92,6 @@ QString ProductList::GetQStringProductInfo(const Product *product) const {
                     "\t" +
                     QString::number(product->GetPrice()) +
                     "\t";
-    if (currectProductClass == "MobilePhones") {
-
-    } else if (currectProductClass == "Smartphones") {
-
-    } else if (currectProductClass == "Laptops") {
-
-    }
 
     return result;
 

@@ -3,6 +3,7 @@
 
 #include <QMessageBox>
 #include <QLabel>
+#include <QCloseEvent>
 
 OwnerEditProduts::OwnerEditProduts(QWidget *parent) :
     QWidget(parent),
@@ -41,9 +42,9 @@ void OwnerEditProduts::on_goBackToOwnerButton_clicked()
 }
 
 void OwnerEditProduts::setLineEditsValidators() {
-    QString doubleRegEx = "[0-9]{0,7}[.]{1}[0-9]{0,2}";
-    QString twoDigitsDoubleRegEx = "[0-9]{0,2}[.]{1}[0-9]{0,2}";
-    QString twoDigitsIntRegEx = "[0-9]{1,2}";
+    QString doubleRegEx = utilities->doubleRegEx;
+    QString twoDigitsDoubleRegEx = utilities->twoDigitsDoubleRegEx;
+    QString twoDigitsIntRegEx = utilities->twoDigitsIntRegEx;
 
     ui->priceLineEdit->setValidator(new QRegExpValidator(QRegExp(doubleRegEx), ui->priceLineEdit));
     ui->maxDiscountLineEdit->setValidator(new QRegExpValidator(QRegExp(twoDigitsDoubleRegEx), ui->maxDiscountLineEdit));
@@ -366,6 +367,7 @@ std::vector<std::string> OwnerEditProduts::getInfoFromLineEdits() {
 
 void OwnerEditProduts::on_addNewPushButton_clicked()
 {
+    ui->productListTableWidget->clearSelection();
     clearLineInputs();
     currOperation = ADD_NEW;
 }
@@ -392,11 +394,11 @@ void OwnerEditProduts::on_saveAllpushButton_clicked()
 
 void OwnerEditProduts::saveAll() {
     if (currTableWasChanged) {
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this, "Save", "All changes will be saved",
+        QMessageBox::StandardButton Ok;
+        Ok = QMessageBox::question(this, "Save", "All changes will be saved",
                                       QMessageBox::Ok|QMessageBox::Cancel);
 
-        if (reply) {
+        if (Ok) {
             // save to file
 //            QString path = QCoreApplication::applicationDirPath();
 //            QMessageBox::information(this, "app dir", "app dir is " + path);

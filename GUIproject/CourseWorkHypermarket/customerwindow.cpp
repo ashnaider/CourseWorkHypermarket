@@ -170,6 +170,8 @@ void CustomerWindow::on_buyProductPushButton_clicked()
             }
          }
     }
+
+    ui->productTableWidget->clearSelection();
 }
 
 
