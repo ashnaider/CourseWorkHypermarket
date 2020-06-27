@@ -7,11 +7,6 @@
 
 #include "utilities.h"
 
-//enum CurrProductClass {
-//    MOBILEPHONE,
-//    SMARTPHONE,
-//    LAPTOP
-//};
 
 namespace Ui {
 class OwnerEditProduts;

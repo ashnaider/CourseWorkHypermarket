@@ -16,11 +16,10 @@ public:
 
     RegularCustomer(std::string customerName);
 
-    virtual double GetPersonalDiscount() const;
+    virtual double GetPersonalDiscount(const Product *product) const;
 
     virtual double GetFinalProductPrice(const Product *product);
 
-    virtual bool BuyProduct(const Product& product);
     virtual bool BuyProduct(const Product* product);
 
     void IncreaseTotalCostOfBoughtProducts(double cost);
@@ -29,7 +28,11 @@ public:
 
     virtual std::string GetFirstName() const;
 
+    virtual std::string GetFullNameInStr() const ;
+
     virtual double GetTotalCostOfBoughtProducts() const;
+
+    virtual std::string GetStatus() const { return "regular"; }
 
 private:
     std::vector<std::string> full_name;

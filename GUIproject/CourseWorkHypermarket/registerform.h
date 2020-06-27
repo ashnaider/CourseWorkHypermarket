@@ -30,7 +30,7 @@ private:
 
     Utilities *utilities;
 
-    void writeUsersInfo(std::string name);
+    void saveNewUser(std::string newName, std::string newPassword);
 
     void setLineEditValidation();
 

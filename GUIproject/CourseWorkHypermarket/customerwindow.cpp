@@ -9,6 +9,8 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QStringList>
+#include <QInputDialog>
+#include <QDir>
 
 #include <vector>
 #include <string>
@@ -136,6 +138,7 @@ void CustomerWindow::updateUserInfoOnScreen() {
     setMoneyOnScreen();
     if (isCustomerRegularBool) {
         setTotalCostOfBoughtProducts();
+        setRegularCustomerInfo();
     }
 }
 
@@ -162,6 +165,9 @@ void CustomerWindow::on_buyProductPushButton_clicked()
     if (buy == QMessageBox::Yes) {
          for (const auto row : selectedRows) {
             if (customer->BuyProduct(productList->ptrVecProductList[row]) ) {
+                if (!isCustomerRegularBool) {
+                     updateToRegularCustomer(productList->ptrVecProductList[row]->GetPrice());
+                }
                 updateUserInfoOnScreen();
                 saveInfo();
 
@@ -172,6 +178,33 @@ void CustomerWindow::on_buyProductPushButton_clicked()
     }
 
     ui->productTableWidget->clearSelection();
+}
+
+
+void CustomerWindow::updateToRegularCustomer(double boughtProductPrice) {
+
+    bool ok;
+    QString name = QInputDialog::getText(this, tr("Would you like to become a regular customer?"),
+                                tr("Enter your name: "), QLineEdit::Normal,
+                                QDir::home().dirName(), &ok);
+
+    if (ok && !name.isEmpty()) {
+        std::vector<std::string> nameVec;
+        std::stringstream ss(name.toStdString());
+        std::string temp;
+        while (ss >> temp) {
+            nameVec.push_back(temp);
+        }
+
+        double money = customer->GetMoney();
+        delete customer;
+
+        customer = new RegularCustomer(money, nameVec, boughtProductPrice);
+
+        isCustomerRegularBool = true;
+
+        updateUserInfoOnScreen();
+    }
 }
 
 
@@ -189,8 +222,12 @@ void CustomerWindow::saveInfo() {
 
     for (auto& line : moneyInfo) {
         if (line[0] == customerName) {
+            line[1] = customer->GetStatus();
             line[2] = newMoney;
-            line[3] = newBought;
+            if (isCustomerRegularBool) {
+                line[3] = newBought;
+                line[4] = customer->GetFullNameInStr();
+            }
         }
     }
     std::vector<std::string> header = moneyInfo[0];

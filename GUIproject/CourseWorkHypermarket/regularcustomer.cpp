@@ -39,9 +39,16 @@ RegularCustomer::RegularCustomer(std::string customerName)
     this->total_cost_of_bought_products = std::stoi(customerInfo[3]);
 }
 
-double RegularCustomer::GetPersonalDiscount() const {
+double RegularCustomer::GetPersonalDiscount(const Product *product) const {
     double discount = total_cost_of_bought_products / 1000;
-    return (discount <= 15) ? discount : 15;
+    double maxDiscount = product->GetMaxDiscount();
+    maxDiscount = (maxDiscount > 15) ? 15 : maxDiscount;
+
+    if (discount > maxDiscount) {
+        return maxDiscount;
+    } else {
+        return discount;
+    }
 }
 
 void RegularCustomer::IncreaseTotalCostOfBoughtProducts(double cost) {
@@ -49,18 +56,10 @@ void RegularCustomer::IncreaseTotalCostOfBoughtProducts(double cost) {
 }
 
 double RegularCustomer::GetFinalProductPrice(const Product *product) {
-    double total_cost = product->GetPrice() - GetPersonalDiscount();
+    double total_cost = ((100 - GetPersonalDiscount(product)) * product->GetPrice()) / 100;
+    return total_cost;
 }
 
-bool RegularCustomer::BuyProduct(const Product& product) {
-    double total_cost = product.GetPrice() - GetPersonalDiscount();
-    if (money >= total_cost) {
-        money -= total_cost;
-        IncreaseTotalCostOfBoughtProducts(total_cost);
-        return true;
-    }
-    return false;
-}
 
 bool RegularCustomer::BuyProduct(const Product *product) {
     double total_cost = GetFinalProductPrice(product);
@@ -88,4 +87,13 @@ std::string RegularCustomer::GetFirstName() const {
 
 double RegularCustomer::GetTotalCostOfBoughtProducts() const {
     return total_cost_of_bought_products;
+}
+
+std::string RegularCustomer::GetFullNameInStr() const {
+    std::string result;
+    for (const auto& word : full_name) {
+        result += word + " ";
+    }
+    result.pop_back();
+    return result;
 }

@@ -65,52 +65,30 @@ void LoginWindow::on_goToResgisterButton_clicked()
 
 void LoginWindow::on_confirmLoginButton_clicked()
 {
+    // get data from line inputs
     QString name = ui->loginNameInput->text();
     QString password = ui->loginPasswordInput->text();
 
-    std::string usersName = name.toStdString();
-    std::string usersPass = password.toStdString();
-
+    // get data from passwords file
+    std::vector<std::vector<std::string>> passwords;
+    passwords = utilities->readFileByWord(utilities->passwordsFile);
+    std::string strName = name.toStdString();
+    std::string strPass = password.toStdString();
     bool correct = false;
 
-    QFile usersPasswords(utilities->passwordsFile);
-
-    if (!usersPasswords.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            QMessageBox::warning(this, "Error!", "Can not open file!");
-            return;
-    }
-
-    QTextStream instream(&usersPasswords);
-    QString line = instream.readAll();
-    std::string all = line.toStdString();
-
-    usersPasswords.close();
-
-    std::stringstream ss(all);
-
-    std::string temp;
-    std::getline(ss, temp, ';');
-    std::getline(ss, temp, ';');
-
-    std::string strName, strPass;
-
-    while (std::getline(ss, strName, ';')) {
-        if (std::getline(ss, strPass, ';')) {
-
-            strName.erase(strName.begin());
-            if (strName == usersName && strPass == usersPass) {
+    // check
+    for (const auto& line : passwords) {
+        if (line[0] == strName) {
+            if (line[1] == strPass) {
                 correct = true;
                 break;
             }
         }
     }
 
-    if (!correct) {
-        QMessageBox::warning(this, "Authorization info", "Wrong name or password!");
-    } else {
-
-        // go to customer window
-        customerWindow =  new CustomerWindow(usersName);
+    if (correct) {
+        // open customer window
+        customerWindow =  new CustomerWindow(strName);
 
         connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &LoginWindow::show);
 
@@ -119,6 +97,9 @@ void LoginWindow::on_confirmLoginButton_clicked()
         clearInputFields();
         this->close();
         QMessageBox::information(this, "Authorization info", "Login successfully! You are customer");
+
+    } else {
+        QMessageBox::warning(this, "Authorization info", "Wrong name or password!");
     }
 
 }

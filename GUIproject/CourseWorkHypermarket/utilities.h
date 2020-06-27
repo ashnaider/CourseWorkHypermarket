@@ -32,10 +32,7 @@ public:
 
     std::vector<std::string> getProductList();
 
-//    QString path = "/home/anton/CourseWorkDb/";
-
-//    QString passwords = path + "passwords.txt";
-//    QString money = path + "money.txt";
+    QString newUserInfo = ";usual;1500;;;";
 
     QString dbPath = "../CourseWorkDb/";
     QString passwordsFile = dbPath + "passwords.txt";
@@ -60,7 +57,9 @@ public:
 
     bool saveInfoToFile(const std::vector<std::string>& header,
                         const std::vector<std::vector<std::string>>& info,
-                        QString file);
+                        QString fileName);
+
+    bool appendInfoToFile(const std::vector<std::string>& info, QString fileName);
 };
 
 #endif // UTILITIES_H

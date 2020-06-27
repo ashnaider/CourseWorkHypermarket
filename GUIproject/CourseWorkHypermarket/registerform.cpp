@@ -44,43 +44,19 @@ void RegisterForm::on_finishRegistrationButton_clicked()
     std::string strNewName = newName.toStdString();
     std::string strNewPass = newPass.toStdString();
 
-    QFile usersPasswords(utilities->passwordsFile);
-
-    if (!usersPasswords.open(QIODevice::ReadWrite | QIODevice::Text)) {
-                    QMessageBox::warning(this, "Error!", "Can not open file!");
-            return;
-    }
-
-    QTextStream mystream(&usersPasswords);
-    QString line = mystream.readAll();
-    std::string all = line.toStdString();
-
-    std::stringstream ss(all);
-
-    std::string strName, strPass;
-
-    std::getline(ss, strName, ';');
-    std::getline(ss, strName, ';');
-
+    std::vector<std::vector<std::string>> passwords;
+    passwords = utilities->readFileByWord(utilities->passwordsFile);
     bool correct = true;
-
-    while ( std::getline(ss, strName, ';') ) {
-        if (std::getline(ss, strPass, ';')) {
-            strName.erase(strName.begin());
-            if (strName == utilities->getUnique(strNewName)) {
-                correct = false;
-            }
+    for (const auto& line : passwords) {
+        if (line[0] == strNewName) {
+            correct = false;
         }
     }
-    newName += ";";
-    newPass += ";\n";
+
     if (correct) {
-        mystream << newName << newPass;
+
+        saveNewUser(strNewName, strNewPass);
         QMessageBox::information(this, "Register info", "Registered Successfully!");
-
-        usersPasswords.close();
-
-        writeUsersInfo(strNewName);
 
         // go back
         this->close();
@@ -89,23 +65,13 @@ void RegisterForm::on_finishRegistrationButton_clicked()
     } else {
         QMessageBox::warning(this, "Rgister info", "This name is allready in use.\nPlease choose another one");
     }
-    usersPasswords.close();
 }
 
-void RegisterForm::writeUsersInfo(std::string name) {
-    QFile file(utilities->moneyFile);
-    if (!file.open(QIODevice::Append | QIODevice::Text)) {
-                    QMessageBox::warning(this, "Error!", "Can not open file money in register form!");
-            return;
-    }
+void RegisterForm::saveNewUser(std::string newName, std::string newPassword) {
 
-    QTextStream stream(&file);
+    utilities->appendInfoToFile({newName, newPassword}, utilities->passwordsFile);
 
-    QString temp = ";usual;1500;;;";
-    stream << QString::fromStdString(name) << temp << endl;
-
-    file.flush();
-    file.close();
+    utilities->appendInfoToFile({newName, "usual", "1500", "", ""}, utilities->moneyFile);
 }
 
 void RegisterForm::clearLineInputFields() {

@@ -18,12 +18,15 @@ public:
 
     virtual double GetFinalProductPrice(const Product* product);
 
-    virtual bool BuyProduct(const Product& product);
+//    virtual bool BuyProduct(const Product& product);
     virtual bool BuyProduct(const Product* product);
 
-    virtual std::string GetFirstName() const { return { }; }
+    virtual std::string GetFirstName() const { return ""; }
+    virtual std::string GetFullNameInStr() const {return "";}
 
     virtual double GetTotalCostOfBoughtProducts() const { return 0; }
+
+    virtual std::string GetStatus() const { return "usual"; }
 
     double GetMoney() const;
 

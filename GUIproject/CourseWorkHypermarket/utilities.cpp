@@ -139,12 +139,13 @@ std::string Utilities::myToLower(const std::string& s) {
 }
 
 bool Utilities::saveInfoToFile(const std::vector<std::string>& header,
-                               const std::vector<std::vector<std::string>>& info, QString filePath) {
-    QFile file(filePath);
+                               const std::vector<std::vector<std::string>>& info, QString fileName) {
+    QFile file(fileName);
           if(file.open(QIODevice::WriteOnly | QIODevice::Text))
           {
               if (!file.exists()) {
-                  qDebug() << "Error while opening file to write!";
+                  qDebug() << "Error while opening file: " << fileName << " for write!";
+
                   return false;
               }
 
@@ -164,8 +165,30 @@ bool Utilities::saveInfoToFile(const std::vector<std::string>& header,
 
               file.flush();
               file.close();
-              qDebug() << "Writing finished";
+
+              qDebug() << "Writing into " << fileName << " finished";
               return true;
           }
+}
+
+bool Utilities::appendInfoToFile(const std::vector<std::string> &info, QString fileName) {
+    QFile file(fileName);
+    if (!file.open(QIODevice::Append | QIODevice::Text)) {
+        qDebug() << "Error while opening file: " << fileName << " for write!";
+        return false;
+    }
+
+    QTextStream stream(&file);
+
+    for (const auto& word : info) {
+        stream << QString::fromStdString(word) << ";";
+    }
+    stream << endl;
+
+    file.flush();
+    file.close();
+
+    qDebug() << "Writing into " << fileName << " finished";
+    return true;
 }
 

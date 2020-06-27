@@ -1,4 +1,4 @@
-#ifndef CUSTOMERWINDOW_H
+    #ifndef CUSTOMERWINDOW_H
 #define CUSTOMERWINDOW_H
 
 #include "customer.h"
@@ -69,6 +69,8 @@ private:
     void updateUserInfoOnScreen();
 
     void saveInfo();
+
+    void updateToRegularCustomer(double boughtProductPrice);
 
 };
 

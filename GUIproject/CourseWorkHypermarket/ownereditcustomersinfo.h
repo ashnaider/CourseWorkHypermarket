@@ -5,16 +5,6 @@
 
 #include "utilities.h"
 
-//enum CurrOperation {
-//    EDIT,
-//    ADD_NEW
-//};
-
-//enum EditableCustomer {
-//    USUAL,
-//    REGULAR
-//};
-
 namespace Ui {
 class OwnerEditCustomersInfo;
 }
