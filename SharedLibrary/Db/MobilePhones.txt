@@ -1,5 +1,0 @@
-Firm;Name;Price;MaxDiscount;Contract;MaxSimCards;Quantity;
-Sigma;Sigma mobile Comfort 50 Elegance3 black;744;12;0;2;34;
-Nokia;Nokia 150 DS White;1099;9;1;2;20;
-Nokia;Nokia 105 TA-1203 SS 2019 Blue;549;5;1;1;31;
-Nomi;Nomi i285 X-Treme Black-Yellow;999;17;0;2;25;

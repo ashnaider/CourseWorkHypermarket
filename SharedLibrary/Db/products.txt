@@ -1,3 +1,0 @@
-MobilePhone ../Db/MobilePhones.txt
-Smartphone ../Db/Smartphones.txt
-Laptop ../Db/Laptops.txt
