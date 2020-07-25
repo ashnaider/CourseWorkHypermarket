@@ -47,15 +47,6 @@ double Customer::GetFinalProductPrice(const Product *product) {
     return total_cost;
 }
 
-//bool Customer::BuyProduct(const Product& product) {
-//    double max_discount = std::min( GetPersonalDiscount(), product.GetMaxDiscount() );
-//    double total_cost = product.GetPrice() - max_discount;
-//    if (money >= total_cost) {
-//        money -= total_cost;
-//        return true;
-//    }
-//    return false;
-//}
 
 bool Customer::BuyProduct(const Product* product) {
     double total_cost = GetFinalProductPrice(product);
@@ -68,7 +59,6 @@ bool Customer::BuyProduct(const Product* product) {
 
 
 std::vector<std::string> Customer::findCustomerInfo(std::string name) {
-    utilities = new Utilities;
 
     std::vector<std::vector<std::string>> customers = utilities->readFileByWord(utilities->moneyFile);
     std::vector<std::string> result;
@@ -79,6 +69,12 @@ std::vector<std::string> Customer::findCustomerInfo(std::string name) {
     }
 
     return result;
+}
+
+Customer::~Customer(){
+    if (utilities != nullptr) {
+        delete utilities;
+    }
 }
 
 

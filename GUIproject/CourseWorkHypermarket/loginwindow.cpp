@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QRegExpValidator>
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QWidget(parent),

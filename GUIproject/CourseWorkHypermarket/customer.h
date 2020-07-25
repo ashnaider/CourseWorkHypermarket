@@ -18,7 +18,7 @@ public:
 
     virtual double GetFinalProductPrice(const Product* product);
 
-//    virtual bool BuyProduct(const Product& product);
+
     virtual bool BuyProduct(const Product* product);
 
     virtual std::string GetFirstName() const { return ""; }
@@ -32,11 +32,13 @@ public:
 
     std::vector<std::string> findCustomerInfo(std::string name);
 
+    virtual ~Customer();
+
 protected:
 
     std::vector<std::string> GetUsersInfo();
 
-    Utilities *utilities;
+    Utilities *utilities = nullptr;
 
     double money;
 };

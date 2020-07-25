@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
+#include <QRegExpValidator>>
 
 #include <string>
 #include <sstream>
