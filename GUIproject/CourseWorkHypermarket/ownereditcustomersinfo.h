@@ -85,7 +85,7 @@ private:
 
     bool isRegular();
 
-    std::vector<std::string> getInfoFromLineEdits();
+    void getInfoFromLineEdits(std::vector<std::string>& result);
 
     bool isValidLineEdits(const std::vector<std::string>& v);
 

@@ -36,8 +36,6 @@ public:
 
 protected:
 
-    std::vector<std::string> GetUsersInfo();
-
     Utilities *utilities = nullptr;
 
     double money;

@@ -222,7 +222,8 @@ void OwnerEditCustomersInfo::updateTotalInfo(std::vector<std::string> &v) {
 
 void OwnerEditCustomersInfo::on_savePushButton_clicked()
 {
-    std::vector<std::string> infoFromLineEdits = getInfoFromLineEdits();
+    std::vector<std::string> infoFromLineEdits;
+    getInfoFromLineEdits(infoFromLineEdits);
 
     if (isValidLineEdits(infoFromLineEdits)) {
         updateTotalInfo(infoFromLineEdits);
@@ -251,8 +252,7 @@ bool OwnerEditCustomersInfo::isValidLineEdits(const std::vector<std::string> &v)
     return true;
 }
 
-std::vector<std::string> OwnerEditCustomersInfo::getInfoFromLineEdits() {
-    std::vector<std::string> result;
+void OwnerEditCustomersInfo::getInfoFromLineEdits(std::vector<std::string>& result) {
 
     QString temp = ui->loginLineEdit->text();
     result.push_back(temp.toStdString());
@@ -271,8 +271,6 @@ std::vector<std::string> OwnerEditCustomersInfo::getInfoFromLineEdits() {
 
     temp = ui->NameLineEdit->text();
     result.push_back(temp.toStdString());
-
-    return result;
 }
 
 void OwnerEditCustomersInfo::on_addNewCustomerPushButton_clicked()
