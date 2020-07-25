@@ -38,10 +38,10 @@ private slots:
     void on_productListComboBox_currentTextChanged(const QString &arg1);
 
 private:
-    Ui::CustomerWindow *ui;
-    Customer *customer;
-    Utilities *utilities;
-    ProductList* productList=nullptr;
+    Ui::CustomerWindow *ui   = nullptr;
+    Customer *customer       = nullptr;
+    Utilities *utilities     = nullptr;
+    ProductList* productList = nullptr;
 
     bool isCustomerRegularBool;
 

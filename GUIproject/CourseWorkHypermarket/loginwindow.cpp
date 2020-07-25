@@ -33,6 +33,8 @@ LoginWindow::LoginWindow(QWidget *parent) :
 
 LoginWindow::~LoginWindow()
 {
+    delete registerForm;
+    delete utilities;
     delete ui;
 }
 
@@ -89,6 +91,9 @@ void LoginWindow::on_confirmLoginButton_clicked()
 
     if (correct) {
         // open customer window
+        if (customerWindow != nullptr) {
+            delete customerWindow;
+        }
         customerWindow =  new CustomerWindow(strName);
 
         connect(customerWindow, &CustomerWindow::goBackToMainWindow, this, &LoginWindow::show);

@@ -48,6 +48,10 @@ CustomerWindow::CustomerWindow(std::string customerName, QWidget *parent) :
 
 CustomerWindow::~CustomerWindow()
 {
+    delete utilities;
+    delete customer;
+    delete productList;
+
     delete ui;
 }
 

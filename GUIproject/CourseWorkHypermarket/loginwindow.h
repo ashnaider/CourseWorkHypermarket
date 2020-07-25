@@ -35,12 +35,12 @@ private slots:
     void on_confirmLoginButton_clicked();
 
 private:
-    Ui::LoginWindow *ui;
-    RegisterForm *registerForm;
+    Ui::LoginWindow *ui = nullptr;
+    RegisterForm *registerForm = nullptr;
 
-    CustomerWindow *customerWindow;
+    CustomerWindow *customerWindow = nullptr;
 
-    Utilities *utilities;
+    Utilities *utilities = nullptr;
 
     bool isCustomerRegular(std::string customerName);
 

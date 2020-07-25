@@ -6,3 +6,4 @@ user4;regular;23434;5432;Sergey Sergeev;
 user5;regular;5000;3000;safd sadf sddsf;
 user6;regular;1000000;3453453;sadfsdf;
 user9;regular;951.00;549.00;Ivan sergeevich;
+user11;usual;1500;;;

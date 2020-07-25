@@ -168,6 +168,8 @@ bool Utilities::saveInfoToFile(const std::vector<std::string>& header,
 
               qDebug() << "Writing into " << fileName << " finished";
               return true;
+          } else {
+              return false;
           }
 }
 

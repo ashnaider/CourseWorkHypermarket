@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete ownerWindow;
+    delete loginWindow;
     delete ui;
 }
 
