@@ -64,7 +64,8 @@ void CustomerWindow::setMoneyOnScreen() {
 
 
 bool CustomerWindow::isCustomerRegular(std::string customerName) {
-    std::vector<std::string> customerInfo = customer->findCustomerInfo(customerName);
+    std::vector<std::string> customerInfo;
+    customer->findCustomerInfo(customerName, customerInfo);
 
     bool result;
     if (customerInfo[1] == "regular") {

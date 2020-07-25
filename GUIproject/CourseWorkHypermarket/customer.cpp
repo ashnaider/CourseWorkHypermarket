@@ -19,7 +19,8 @@ Customer::Customer(std::string customerName)
 {
     utilities = new Utilities;
 
-    std::vector<std::string> customerInfo = findCustomerInfo(customerName);
+    std::vector<std::string> customerInfo;
+    findCustomerInfo(customerName, customerInfo);
 
     this->money = std::stoi(customerInfo[2]);
 }
@@ -58,17 +59,15 @@ bool Customer::BuyProduct(const Product* product) {
 }
 
 
-std::vector<std::string> Customer::findCustomerInfo(std::string name) {
+void Customer::findCustomerInfo(std::string name, std::vector<std::string>& result) {
 
     std::vector<std::vector<std::string>> customers = utilities->readFileByWord(utilities->moneyFile);
-    std::vector<std::string> result;
+
     for (const auto& customer: customers) {
         if (customer[0] == name) {
             result = customer;
         }
     }
-
-    return result;
 }
 
 Customer::~Customer(){

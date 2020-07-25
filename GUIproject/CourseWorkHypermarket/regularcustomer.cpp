@@ -23,7 +23,8 @@ RegularCustomer::RegularCustomer(
 RegularCustomer::RegularCustomer(std::string customerName)
     : Customer(customerName)
 {
-    std::vector<std::string> customerInfo = findCustomerInfo(customerName);
+    std::vector<std::string> customerInfo;
+    findCustomerInfo(customerName, customerInfo);
 
     std::string strFullName = customerInfo[4];
     std::stringstream ssFullName(strFullName);

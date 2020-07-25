@@ -30,7 +30,7 @@ public:
 
     double GetMoney() const;
 
-    std::vector<std::string> findCustomerInfo(std::string name);
+    void findCustomerInfo(std::string name, std::vector<std::string>& result);
 
     virtual ~Customer();
 
