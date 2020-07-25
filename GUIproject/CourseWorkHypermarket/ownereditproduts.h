@@ -53,6 +53,8 @@ private slots:
 
     void on_saveAllpushButton_clicked();
 
+    void on_productListTableWidget_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
+
 private:
     Ui::OwnerEditProduts *ui;
     Utilities *utilities;
@@ -111,6 +113,8 @@ private:
     bool productExist(const std::vector<std::string>& product);
 
     void saveAll();
+
+    void edit();
 
 };
 

@@ -204,8 +204,7 @@ void OwnerEditProduts::on_deletePushButton_clicked()
     setProductListTable();
 }
 
-void OwnerEditProduts::on_editPushButton_clicked()
-{
+void OwnerEditProduts::edit() {
     currRow = ui->productListTableWidget->currentRow();
     if (currRow == -1) {
         QMessageBox::warning(this, "Warning", "Please select product to edit");
@@ -213,6 +212,12 @@ void OwnerEditProduts::on_editPushButton_clicked()
     }
     currOperation = EDIT;
     fillEditLines();
+
+}
+
+void OwnerEditProduts::on_editPushButton_clicked()
+{
+    edit();
 }
 
 void OwnerEditProduts::fillEditLines() {
@@ -416,3 +421,8 @@ void OwnerEditProduts::saveAll() {
     }
 }
 
+
+void OwnerEditProduts::on_productListTableWidget_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
+{
+    edit();
+}

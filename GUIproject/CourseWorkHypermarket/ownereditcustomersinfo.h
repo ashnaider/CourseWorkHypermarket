@@ -53,6 +53,8 @@ private slots:
 
     void on_saveAllPushButton_clicked();
 
+    void on_customersInfoTableWidget_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
+
 private:
     Ui::OwnerEditCustomersInfo *ui;
     Utilities *utilities;
@@ -96,6 +98,8 @@ private:
     void updateTotalInfo(std::vector<std::string>& v);
 
     void saveAll();
+
+    void edit();
 };
 
 #endif // OWNEREDITCUSTOMERSINFO_H

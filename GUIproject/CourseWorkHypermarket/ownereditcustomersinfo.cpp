@@ -161,9 +161,7 @@ void OwnerEditCustomersInfo::on_deleteCustomerPushButton_clicked()
     setCustomersInfoTable();
 }
 
-
-void OwnerEditCustomersInfo::on_editCustomerPushButton_clicked()
-{
+void OwnerEditCustomersInfo::edit() {
     currOperation = EDIT;
     currRow = ui->customersInfoTableWidget->currentRow();
     if (currRow == -1) {
@@ -174,6 +172,11 @@ void OwnerEditCustomersInfo::on_editCustomerPushButton_clicked()
     // setVisibleAllCustomersFields(true);
 
     fillLineEdits();
+}
+
+void OwnerEditCustomersInfo::on_editCustomerPushButton_clicked()
+{
+    edit();
 }
 
 void OwnerEditCustomersInfo::fillLineEdits() {
@@ -372,4 +375,11 @@ void OwnerEditCustomersInfo::saveAll() {
         path = utilities->passwordsFile;
         utilities->saveInfoToFile(passwordsHeader, passwordsInfo, path);
     }
+}
+
+
+
+void OwnerEditCustomersInfo::on_customersInfoTableWidget_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
+{
+    edit();
 }
