@@ -19,5 +19,7 @@ SharedLibrary/build
 # ignore gui build dir
 GUIproject/build-CourseWorkHypermarket-Desktop-Debug
 
+GUIproject/build-CourseWorkHypermarket-Desktop_Qt_5_15_0_GCC_64bit-Debug
+
 # qt user configuration build file
 *.pro.user
