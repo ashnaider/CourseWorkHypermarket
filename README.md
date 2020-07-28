@@ -2,9 +2,11 @@
 First grade course work. OOP.
 
 Customer window:
+
 ![Customer Window Screenshot](img/CustomerWindow.png)
 
 Owner window:
+
 ![Owner Window Screenshot](img/OwnerWindow.png)
 
 ## Run project
