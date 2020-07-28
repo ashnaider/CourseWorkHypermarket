@@ -1,6 +1,10 @@
 # CourseWorkHypermarket
 First grade course work. OOP.
 
+![Customer Window Screenshot](img/CustomerWindow.png)
+
+![Owner Window Screenshot](img/OwnerWindow.png)
+
 ## Run project
 1. ### clone 
 ```
